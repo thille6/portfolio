@@ -663,11 +663,12 @@
       font-family: 'Rajdhani', sans-serif;
       color: var(--primary);
       font-size: 1.8rem;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.5rem;
       position: relative;
       display: inline-block;
       text-transform: uppercase;
       letter-spacing: 1px;
+      z-index: 10;
     }
     
     h2::after {
@@ -825,6 +826,7 @@
       font-family: 'Rajdhani', sans-serif;
       text-transform: uppercase;
       letter-spacing: 1px;
+      display: block; /* säkerställ ny rad under h2 */
     }
     
     .show-contact:hover, .show-contact:focus {
@@ -844,6 +846,20 @@
       color: var(--accent);
       font-weight: 600;
       text-decoration: underline;
+    }
+    
+    /* Läsbarare länkar i brödtext */
+    p a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 600;
+    }
+    p a:hover, p a:focus {
+      color: var(--primary);
+      text-decoration-thickness: 2px;
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
     }
     
     /* Responsivitet */

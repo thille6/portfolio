@@ -432,8 +432,8 @@
 <body>
   <header>
     <div class="version-switcher">
-      <a href="grafisk.html" class="version-link">Grafisk version</a>
       <a href="index.html" class="version-link active">WCAG-vänlig</a>
+      <a href="grafisk.html" class="version-link">Grafisk version</a>
     </div>
     
     <img src="profile.jpg" alt="Profilbild av Patrik Thilen" class="profile-pic">
@@ -809,7 +809,20 @@
     color: var(--primary);
     font-weight: 700;
   }
-
+  
+  /* Läsbarare länkar i brödtext */
+  p a {
+    color: var(--primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 600;
+  }
+  p a:hover, p a:focus {
+    color: var(--accent);
+    text-decoration-thickness: 2px;
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+  }
   .process-list li::before {
     content: '\2022';
     margin-right: 0.5rem;
