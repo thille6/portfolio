@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <title>Patrik Thilen – UX Portfolio (Grafisk version)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="UX-portfolio för Patrik Thilen, UX-student och framtida designer. Grafisk version med animationer och effekter.">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #00a6ed;
+      --primary-dark: #0a4263;
+      --bg: #0a1218;
+      --card: #0e1c25;
+      --accent: #ff7b00;
+      --accent-dark: #b35600;
+      --text: #e6e6e6;
+      --muted: #8a9ba8;
+      --focus: #ffbe16;
+      --radius: 0.4rem;
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+      --maxw: 820px;
+      --btn-size: 3rem;
+      --accent-gradient: linear-gradient(135deg, #ff7b00, #ff4d00);
+      --primary-gradient: linear-gradient(135deg, #00a6ed, #0062a3);
+      --glitch-blue: rgba(0, 166, 237, 0.5);
+      --glitch-orange: rgba(255, 123, 0, 0.5);
+    }
+    
+    /* Anpassad cursor */
+    .custom-cursor {
+      position: fixed;
+      width: 40px;
+      height: 40px;
+      border: 2px solid rgba(0, 166, 237, 0.5);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s, height 0.3s, border-color 0.3s;
+      mix-blend-mode: difference;
+    }
+    
+    .cursor-dot {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      background-color: var(--accent);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s;
+    }
+    
+    .cursor-hover {
+      width: 60px;
+      height: 60px;
+      border-color: var(--accent);
+      background-color: rgba(255, 123, 0, 0.1);
+      mix-blend-mode: normal;
+    }
+    
+    .dot-hover {
+      background-color: var(--primary);
+      width: 12px;
+      height: 12px;
+      transform: translate(-50%, -50%) scale(1.5);
+    }
+    
+    /* Dölj cursor på mobil */
+    @media (max-width: 768px) {
+      .custom-cursor, .cursor-dot {
+        display: none;
+      }
+      body {
+        cursor: auto;
+      }
+    }
+    
+    /* Musspårning */
+    .mouse-trail {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.7;
+      transform: scale(0.1);
+      transition: transform 1s ease-out, opacity 1s ease-out;
+    }
+    
+    @keyframes glowPulse {
+      0% { box-shadow: 0 0 5px rgba(0, 166, 237, 0.5), 0 0 10px rgba(0, 166, 237, 0.3); }
+      50% { box-shadow: 0 0 20px rgba(0, 166, 237, 0.7), 0 0 30px rgba(0, 166, 237, 0.5); }
+      100% { box-shadow: 0 0 5px rgba(0, 166, 237, 0.5), 0 0 10px rgba(0, 166, 237, 0.3); }
+    }
+    
+    @keyframes borderGlow {
+      0% { border-color: var(--primary); }
+      50% { border-color: var(--accent); }
+      100% { border-color: var(--primary); }
+    }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    @keyframes scanline {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100%); }
+    }
+    
+    @keyframes glitch {
+      0% { clip-path: inset(40% 0 61% 0); transform: translate(-5px); }
+      20% { clip-path: inset(92% 0 1% 0); transform: translate(5px); }
+      40% { clip-path: inset(43% 0 1% 0); transform: translate(-5px); }
+      60% { clip-path: inset(25% 0 58% 0); transform: translate(5px); }
+      80% { clip-path: inset(54% 0 7% 0); transform: translate(-5px); }
+      100% { clip-path: inset(58% 0 43% 0); transform: translate(0); }
+    }
+    
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    @keyframes radar {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Nya animationer för bakgrundseffekter */
+    @keyframes pulsate {
+      0% { transform: scale(1); opacity: 0.4; }
+      50% { transform: scale(1.2); opacity: 0.7; }
+      100% { transform: scale(1); opacity: 0.4; }
+    }
+    
+    @keyframes floatHorizontal {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(20px); }
+      100% { transform: translateX(0); }
+    }
+    
+    @keyframes colorShift {
+      0% { filter: hue-rotate(0deg); }
+      50% { filter: hue-rotate(30deg); }
+      100% { filter: hue-rotate(0deg); }
+    }
+    
+    @keyframes lightBeam {
+      0% { opacity: 0; transform: translateY(100%) rotate(45deg); }
+      20% { opacity: 0.7; }
+      80% { opacity: 0.7; }
+      100% { opacity: 0; transform: translateY(-100%) rotate(45deg); }
+    }
+    
+    html { scroll-behavior: smooth; }
+    
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Barlow', sans-serif;
+      font-size: 1.09rem;
+      line-height: 1.7;
+      min-height: 100vh;
+      letter-spacing: 0.01em;
+      position: relative;
+      overflow-x: hidden;
+    }
+    
+    /* Dynamisk bakgrund med canvas */
+    #particles-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -10;
+      opacity: 0.7;
+    }
+    
+    /* Ljuseffekter i bakgrunden */
+    .light-effect {
+      position: fixed;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+      opacity: 0.15;
+      z-index: -5;
+      filter: blur(40px);
+      pointer-events: none;
+    }
+    
+    .light-effect.primary {
+      width: 600px;
+      height: 600px;
+      top: -200px;
+      left: -100px;
+      animation: pulsate 15s infinite ease-in-out, colorShift 30s infinite alternate;
+    }
+    
+    .light-effect.accent {
+      width: 500px;
+      height: 500px;
+      bottom: -150px;
+      right: -100px;
+      background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+      animation: pulsate 12s infinite ease-in-out;
+    }
+    
+    .light-effect.moving {
+      width: 300px;
+      height: 300px;
+      top: 50%;
+      left: 30%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(0, 166, 237, 0.5) 0%, transparent 70%);
+      animation: floatHorizontal 20s infinite ease-in-out alternate, pulsate 8s infinite ease-in-out;
+    }
+    
+    /* Ljusstrålar som rör sig över skärmen */
+    .light-beam {
+      position: fixed;
+      width: 200%;
+      height: 200px;
+      background: linear-gradient(90deg, transparent, rgba(0, 166, 237, 0.05), transparent);
+      transform: rotate(45deg);
+      top: -100px;
+      left: -100%;
+      z-index: -4;
+      pointer-events: none;
+      animation: lightBeam 15s infinite ease-out;
+    }
+    
+    .light-beam:nth-child(2) {
+      animation-delay: 5s;
+      background: linear-gradient(90deg, transparent, rgba(255, 123, 0, 0.05), transparent);
+    }
+    
+    .light-beam:nth-child(3) {
+      animation-delay: 10s;
+    }
+    
+    /* Grid-mönster i bakgrunden */
+    .grid-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(0, 166, 237, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 166, 237, 0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: -6;
+      pointer-events: none;
+      opacity: 0.3;
+    }
+    
+    /* Scanline effect */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(transparent, rgba(10, 18, 24, 0.2), transparent);
+      pointer-events: none;
+      z-index: 100;
+      animation: scanline 8s linear infinite;
+      opacity: 0.3;
+    }
+    
+    /* Versionsväljare */
+    .version-switcher {
+      position: absolute;
+      top: 1.2rem;
+      left: 1.2rem;
+      display: flex;
+      gap: 0.5rem;
+      z-index: 10;
+    }
+    
+    .version-link {
+      background: rgba(0, 166, 237, 0.2);
+      border: 1px solid var(--primary);
+      color: #fff;
+      text-decoration: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: var(--radius);
+      font-size: 0.9rem;
+      font-weight: 600;
+      font-family: 'Rajdhani', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 15px rgba(0, 166, 237, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .version-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
+    }
+    
+    .version-link:hover::before {
+      left: 100%;
+    }
+    
+    .version-link.active {
+      background: var(--accent-gradient);
+      border-color: var(--accent);
+      pointer-events: none;
+      box-shadow: 0 0 20px rgba(255, 123, 0, 0.4);
+    }
+    
+    .version-link:hover, .version-link:focus {
+      background: rgba(0, 166, 237, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 0 20px rgba(0, 166, 237, 0.5);
+    }
+    
+    @media (max-width: 700px) {
+      .version-switcher {
+        top: 0.8rem;
+        left: 0.8rem;
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+      
+      .version-link {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.6rem;
+        min-height: 32px;
+      }
+    }
+    
+    /* Header */
+    header {
+      background: rgba(14, 28, 37, 0.8);
+      border: 1px solid var(--primary-dark);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow), 0 0 20px rgba(0, 166, 237, 0.2);
+      margin: 1.7rem auto 2rem auto;
+      padding: 2.2rem 1.5rem 2rem 1.5rem;
+      max-width: var(--maxw);
+      text-align: center;
+      position: relative;
+      animation: fadeIn 1s ease-out;
+    }
+    
+    header, section, .accordion {
+      position: relative;
+    }
+    
+    header::before, section::before, .accordion::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      border: 2px solid transparent;
+      border-radius: calc(var(--radius) + 2px);
+      animation: borderGlow 8s infinite;
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    header::before {
+      animation-duration: 10s;
+    }
+    
+    section::before {
+      animation-duration: 12s;
+      animation-delay: 1s;
+    }
+    
+    .accordion::before {
+      animation-duration: 8s;
+      animation-delay: 2s;
+    }
+    
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        linear-gradient(90deg, transparent 50%, rgba(255, 123, 0, 0.05) 50%),
+        linear-gradient(rgba(0, 166, 237, 0.05) 50%, transparent 50%);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: -1;
+      border-radius: var(--radius);
+    }
+    
+    header::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--accent-gradient);
+      border-top-left-radius: var(--radius);
+      border-top-right-radius: var(--radius);
+    }
+    
+    /* Holografisk text för h1 */
+    @keyframes holographic {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header h1 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 0.2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      position: relative;
+      display: inline-block;
+      background-image: linear-gradient(
+        135deg, 
+        var(--primary) 0%, 
+        #36c5ff 25%, 
+        var(--accent) 50%, 
+        #ff9d4d 75%, 
+        var(--primary) 100%
+      );
+      background-size: 400% 400%;
+      animation: holographic 15s ease infinite;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent !important;
+      text-shadow: 0 0 10px rgba(0, 166, 237, 0.5), 
+                 0 0 20px rgba(0, 166, 237, 0.3);
+    }
+    
+    header h1::before, header h1::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.8;
+      background-image: inherit;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: holographic 15s ease infinite;
+      animation-delay: -5s;
+    }
+    
+    header h1::before {
+      color: var(--glitch-blue);
+      z-index: -1;
+      animation: glitch 3s infinite alternate-reverse, holographic 15s ease infinite;
+    }
+    
+    header h1::after {
+      color: var(--glitch-orange);
+      z-index: -2;
+      animation: glitch 2s infinite alternate-reverse, holographic 15s ease infinite;
+    }
+    
+    header p {
+      font-size: 1.15rem;
+      color: var(--muted);
+      margin-bottom: 1.2em;
+      animation: fadeIn 1.2s ease-out;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--primary);
+      margin-bottom: 1rem;
+      box-shadow: 0 0 20px rgba(0, 166, 237, 0.4);
+      animation: float 6s ease-in-out infinite;
+      position: relative;
+    }
+    
+    .profile-pic::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border: 2px solid var(--primary);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+      opacity: 0;
+    }
+    
+    /* Radar effect around profile pic */
+    .profile-pic::after {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      right: -20px;
+      bottom: -20px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, transparent 0%, transparent 50%, rgba(0, 166, 237, 0.1) 50%, transparent 51%, transparent 100%);
+      animation: radar 4s linear infinite;
+      z-index: -1;
+    }
+    
+    /* Navigering */
+    nav {
+      display: flex;
+      gap: 0.8rem;
+      justify-content: center;
+      margin: 1.6rem 0 0.6rem 0;
+      flex-wrap: wrap;
+      position: relative;
+      padding: 0.5rem;
+      border-top: 1px solid rgba(0, 166, 237, 0.2);
+      border-bottom: 1px solid rgba(0, 166, 237, 0.2);
+    }
+    
+    nav::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 166, 237, 0.1), transparent);
+      pointer-events: none;
+    }
+    
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      font-family: 'Rajdhani', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 0.3rem 0.9rem;
+      border-radius: var(--radius);
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid transparent;
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+    
+    nav a:hover::after, nav a:focus::after, nav a.active::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+    
+    nav a:hover, nav a:focus {
+      color: var(--accent);
+      background: rgba(255, 123, 0, 0.1);
+      border-color: var(--accent-dark);
+    }
+    
+    nav a.active {
+      color: var(--accent);
+      background: rgba(255, 123, 0, 0.15);
+      border: 1px solid var(--accent-dark);
+      box-shadow: 0 0 10px rgba(255, 123, 0, 0.2);
+    }
+    
+    /* Huvudinnehåll */
+    main {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    section {
+      background: rgba(14, 28, 37, 0.8);
+      border: 1px solid var(--primary-dark);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow);
+      animation: fadeIn 0.8s ease-out;
+      animation-fill-mode: both;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      transform-style: preserve-3d;
+      perspective: 1000px;
+    }
+    
+    section:hover {
+      transform: translateY(-5px) rotateX(2deg) rotateY(2deg);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), 
+                0 0 20px rgba(0, 166, 237, 0.3);
+    }
+    
+    section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--primary-gradient);
+    }
+    
+    /* Animera sektioner med fördröjning */
+    section:nth-child(1) { animation-delay: 0.2s; }
+    section:nth-child(2) { animation-delay: 0.4s; }
+    section:nth-child(3) { animation-delay: 0.6s; }
+    section:nth-child(4) { animation-delay: 0.8s; }
+    section:nth-child(5) { animation-delay: 1s; }
+    
+    h2 {
+      font-family: 'Rajdhani', sans-serif;
+      color: var(--primary);
+      font-size: 1.8rem;
+      margin-bottom: 1.2rem;
+      position: relative;
+      display: inline-block;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--accent-gradient);
+    }
+    
+    /* Accordion */
+    .accordion {
+      background: rgba(10, 18, 24, 0.5);
+      border: 1px solid var(--primary-dark);
+      border-radius: var(--radius);
+      margin-bottom: 1rem;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transform-style: preserve-3d;
+    }
+    
+    .accordion:hover {
+      transform: translateY(-5px) rotateX(2deg) rotateY(1deg);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5), 
+              0 0 15px rgba(255, 123, 0, 0.3);
+    }
+    
+    .accordion-btn {
+      width: 100%;
+      text-align: left;
+      padding: 1rem 1.5rem;
+      background: rgba(0, 166, 237, 0.15);
+      border: none;
+      color: #ffffff;
+      font-size: 1.1rem;
+      font-weight: 600;
+      font-family: 'Rajdhani', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .accordion-btn::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--primary);
+      opacity: 0.5;
+    }
+    
+    .accordion-btn:hover, .accordion-btn:focus {
+      background: rgba(255, 123, 0, 0.15);
+    }
+    
+    .accordion-btn:hover::after, .accordion-btn:focus::after {
+      background: var(--accent);
+    }
+    
+    .accordion[aria-expanded="true"] .accordion-btn {
+      background: var(--accent-gradient);
+    }
+    
+    .icon {
+      transition: transform 0.3s ease;
+      font-size: 1.5rem;
+      color: var(--accent);
+    }
+    
+    .accordion[aria-expanded="true"] .icon {
+      transform: rotate(90deg);
+    }
+    
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+      padding: 0 1.5rem;
+      background: rgba(10, 18, 24, 0.3);
+    }
+    
+    .accordion[aria-expanded="true"] .accordion-content {
+      max-height: 500px;
+      padding: 1rem 1.5rem 1.5rem;
+    }
+    
+    /* Projekt-roll styling */
+    .project-role {
+      display: inline-block;
+      background: rgba(0, 166, 237, 0.1);
+      border: 1px solid var(--primary-dark);
+      color: var(--primary);
+      padding: 0.3rem 0.8rem;
+      border-radius: var(--radius);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      font-family: 'Rajdhani', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    /* Listor */
+    ul {
+      list-style: none;
+      padding-left: 1.2rem;
+    }
+    
+    ul li {
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+    
+    ul li::before {
+      content: '>';
+      position: absolute;
+      left: -1.2rem;
+      color: var(--accent);
+      font-weight: bold;
+    }
+    
+    /* Kontaktuppgifter */
+    .contact-info {
+      margin-top: 0.9em;
+      line-height: 2.2;
+      display: none;
+      animation: fadeIn 0.6s;
+    }
+    
+    .contact-info.show { display: block; }
+    
+    .show-contact {
+      background: var(--primary-gradient);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      padding: 0.5em 1.5em;
+      font-size: 1em;
+      margin-top: 0.8em;
+      cursor: pointer;
+      font-weight: 600;
+      min-height: 48px;
+      min-width: 150px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(0, 166, 237, 0.3);
+      font-family: 'Rajdhani', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .show-contact:hover, .show-contact:focus {
+      background: var(--accent-gradient);
+      transform: translateY(-3px);
+      box-shadow: 0 0 20px rgba(255, 123, 0, 0.4);
+    }
+    
+    .cv-key {
+      font-weight: 600;
+      color: var(--primary);
+      min-width: 200px;
+      display: inline-block;
+    }
+    
+    .linkedin-link {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: underline;
+    }
+    
+    /* Responsivitet */
+    @media (max-width: 700px) {
+      body { font-size: 1rem; }
+      header, section { padding: 1.5rem 1rem; }
+      header h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Bakgrundseffekter -->
+  <canvas id="particles-canvas"></canvas>
+  <div class="grid-overlay"></div>
+  <div class="light-effect primary"></div>
+  <div class="light-effect accent"></div>
+  <div class="light-effect moving"></div>
+  <div class="light-beam"></div>
+  <div class="light-beam"></div>
+  <div class="light-beam"></div>
+  
+  <header>
+    <div class="version-switcher" role="navigation" aria-label="Välj portfolioversion">
+      <a href="index.html" class="version-link">WCAG-vänlig</a>
+      <a href="grafisk.html" class="version-link active" aria-current="page">Grafisk version</a>
+    </div>
+    
+    <img src="profile.jpg" alt="Profilbild av Patrik Thilen" class="profile-pic">
+    <h1 data-text="Patrik Thilen">Patrik Thilen</h1>
+    <p>UX-student med passion för empati, digitalt tänk och framtidens användarupplevelser.</p>
+    
+    <nav aria-label="Huvudnavigation">
+      <a href="#om-mig" class="active">Om mig</a>
+      <a href="#projekt">Projekt</a>
+      <a href="#process">Så här jobbar jag</a>
+      <a href="#bidrag">Vad jag kan bidra med</a>
+      <a href="#kontakt">CV & Kontakt</a>
+    </nav>
+  </header>
+  
+  <main>
+    <section id="om-mig" class="about">
+      <h2>Om mig</h2>
+      <p>
+        <strong>Kreativ UX-student</strong> med erfarenhet från både <strong>social omsorg</strong> och digital design.<br>
+        <br>
+        Jag har över 13 års erfarenhet av att arbeta med människor inom psykiatrin, vilket har gett mig en djup förståelse för <strong>kommunikation, empati</strong> och hur digitala tjänster kan förenkla människors vardag.<br>
+        <br>
+        Jag trivs både självständigt och i team, och brinner för att skapa lösningar som verkligen möter användarnas behov – med <strong>tydlig struktur, tillgänglighet</strong> och öppenhet för feedback. Mitt mål är att bidra med mitt engagemang, min nyfikenhet och min förmåga att alltid se saker ur användarens perspektiv.
+      </p>
+    </section>
+
+    <section id="projekt" aria-labelledby="projekt-heading">
+      <h2 id="projekt-heading">Mina projekt</h2>
+      <div class="project-list" role="list">
+        <!-- Accordion-projekt -->
+        <div class="accordion" aria-expanded="false">
+          <button class="accordion-btn" aria-controls="project1" aria-expanded="false">
+            Care to Translate – UX för industrin
+            <span class="icon" aria-hidden="true">›</span>
+          </button>
+          <div id="project1" class="accordion-content" role="region" aria-labelledby="project1-title">
+            <div class="project-role">Roll: UX-designer, Research, Analys</div>
+            <div class="project-text">
+              <ul>
+                <li>Fokus på hur språkbarriärer påverkar säkerhet och produktion inom industrin.</li>
+                <li>Intervjuer, enkäter och insiktsarbete kring missförstånd, felöversatta termer och oro att göra fel.</li>
+                <li>Prototyp för förbättrad onboarding och AI-stöd för yrkesspråk.</li>
+                <li><strong>Mitt bidrag:</strong> Intervjuer, analys, användarresa, workshops, persona-framtagning.</li>
+              </ul>
+              <div class="quote">"Det finns ett stort behov av tekniskt korrekt översättningsprogram anpassat för industrin. Med rätt verktyg kan både säkerhet och produktivitet öka."</div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion" aria-expanded="false">
+          <button class="accordion-btn" aria-controls="project2" aria-expanded="false">
+            H&M – Hållbara onlineköp och minskade returer
+            <span class="icon" aria-hidden="true">›</span>
+          </button>
+          <div id="project2" class="accordion-content" role="region" aria-labelledby="project2-title">
+            <div class="project-role">Roll: UX-design, UI-design, användbarhetstester | <em>Fiktivt case</em></div>
+            <div class="project-text">
+              <ul>
+                <li>Fiktivt koncept utvecklat som skolprojekt för att utforska hållbarhetslösningar inom e-handel.</li>
+                <li>Prototyp för hållbar e-handel, med 3D-modell för storleksprovning, miljöpoäng och community.</li>
+                <li>Research, användartester, grafisk profil.</li>
+                <li><strong>Mitt bidrag:</strong> UI-design, struktur, research, tillgänglighetsanpassning.</li>
+              </ul>
+              <div class="quote">"Med digitala hjälpmedel och belöningssystem kan vi göra hållbart mode både enklare och roligare för användaren."</div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion" aria-expanded="false">
+          <button class="accordion-btn" aria-controls="project3" aria-expanded="false">
+            Academedia – Digitalisering av samtalskort
+            <span class="icon" aria-hidden="true">›</span>
+          </button>
+          <div id="project3" class="accordion-content" role="region" aria-labelledby="project3-title">
+            <div class="project-role">Roll: UX-design, koncept, prototyp</div>
+            <div class="project-text">
+              <ul>
+                <li>Koncept och prototyp för att digitalisera samtalskort om psykisk hälsa och värdegrund för unga.</li>
+                <li>Fokus på trygghet och interaktivitet.</li>
+                <li><strong>Mitt bidrag:</strong> Idégenerering, personas, användarresa, prototypdesign.</li>
+              </ul>
+              <div class="quote">"Teknik kan öppna upp svåra samtal – men det är empati och trygghet som får unga att våga dela."</div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion" aria-expanded="false">
+          <button class="accordion-btn" aria-controls="project4" aria-expanded="false">
+            Alfred Nobel Björkborn – Nytt museikoncept för unga
+            <span class="icon" aria-hidden="true">›</span>
+          </button>
+          <div id="project4" class="accordion-content" role="region" aria-labelledby="project4-title">
+            <div class="project-role">Roll: UX, målgruppsanalys, konceptutveckling</div>
+            <div class="project-text">
+              <ul>
+                <li>Digitalt och interaktivt besökskoncept för unga på museum.</li>
+                <li>Quiz, gamification, sociala medier och målgruppsanalys.</li>
+                <li><strong>Mitt bidrag:</strong> Användarresa, lösningsförslag, analys och rekommendationer.</li>
+              </ul>
+              <div class="quote">"Engagerande innehåll och interaktiva lösningar är vägen till ungas intresse."</div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion" aria-expanded="false">
+          <button class="accordion-btn" aria-controls="project5" aria-expanded="false">
+            Color Palette Tool
+            <span class="icon" aria-hidden="true">›</span>
+          </button>
+          <div id="project5" class="accordion-content" role="region" aria-labelledby="project5-title">
+            <div class="project-role">Roll: UX/UI-design, programmering (frontend)</div>
+            <div class="project-text">
+              <ul>
+                <li>Färgpalett-generator och designverktyg med fokus på enkelhet, färgval och interaktivitet.</li>
+                <li><strong>Mitt bidrag:</strong> Design, utveckling av UI och funktion, användartest och dokumentation.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 1.3em; font-size: 0.97em; color:var(--muted);">
+        <em>Obs! Alla lösningar är koncept och prototyper – inga är implementerade i verkligheten.</em>
+      </div>
+    </section>
+
+    <section id="process">
+      <h2>Så här jobbar jag</h2>
+      <ul class="process-list">
+        <li><strong>Empati och användarcentrerat tänk:</strong> Intervjuer, enkäter och observation för verkliga insikter och pain points.</li>
+        <li><strong>Idégenerering och prototypande:</strong> Snabba skisser, workshops och digitala prototyper – för att testa och förbättra idéer tidigt med målgruppen.</li>
+        <li><strong>Iterativt arbetssätt:</strong> Design och test i flera omgångar, alltid med användarens feedback som grund.</li>
+        <li><strong>Tydlighet och tillgänglighet:</strong> Struktur, läsbarhet och WCAG-anpassning i all design.</li>
+        <li><strong>Samarbete och feedback:</strong> Jag trivs bäst när idéer får utmanas och förbättras tillsammans i team.</li>
+      </ul>
+    </section>
+
+    <section id="bidrag">
+      <h2>Vad jag kan bidra med</h2>
+      <ul class="skills-list">
+        <li>Nyfikenhet, driv och förmåga att förstå användaren på riktigt</li>
+        <li>Erfarenhet av research, analys, prototypande och presentation</li>
+        <li>Starkt engagemang för tillgänglighet och inkluderande lösningar</li>
+        <li>Vana av samarbete, feedback och problemlösning i grupp</li>
+        <li>Förmåga att omsätta komplexa utmaningar till tydliga, användarvänliga koncept</li>
+        <li>Snabb på att lära mig nya verktyg och arbetssätt</li>
+      </ul>
+    </section>
+
+    <section id="kontakt" class="glass-card p-8 rounded-2xl shadow-2xl backdrop-blur-md bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-white/20 transform hover:scale-105 transition-all duration-300">
+      <h2 class="text-3xl font-bold mb-6 text-center text-white holographic-text animate-pulse">CV & Kontakt</h2>
+      <button class="show-contact w-full py-4 px-8 mb-6 text-xl font-bold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl" id="toggleContact" aria-expanded="false" aria-controls="contactInfo">
+        Visa kontaktuppgifter
+      </button>
+      <div class="contact-info hidden text-white text-lg" id="contactInfo" tabindex="-1" aria-live="polite">
+        <dl class="space-y-6">
+          <div class="animate-fade-in">
+            <dt class="font-bold text-blue-300 text-xl mb-2">Personlig information</dt>
+            <dd class="pl-4 space-y-2">
+              <p><span class="font-bold text-blue-300">Mail:</span> <a href="mailto:patrikthilen@gmail.com" class="text-purple-300 hover:text-purple-100 transition-colors">patrikthilen@gmail.com</a></p>
+              <p><span class="font-bold text-blue-300">LinkedIn:</span> <a class="text-purple-300 hover:text-purple-100 transition-colors" href="https://www.linkedin.com/in/patrik-thilen-119263169/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin" aria-hidden="true" style="margin-right:0.35em;"></i>Patrik Thilen</a></p>
+            </dd>
+          </div>
+          <div class="animate-fade-in">
+            <dt class="font-bold text-blue-300 text-xl mb-2">Utbildning</dt>
+            <dd class="pl-4 space-y-2">
+              <p>Social omsorg, Karlstad universitet</p>
+              <p>UX Design, Futuregames, Karlstad</p>
+            </dd>
+          </div>
+          <div class="animate-fade-in">
+            <dt class="font-bold text-blue-300 text-xl mb-2">Erfarenhet och kompetenser</dt>
+            <dd class="pl-4 space-y-2">
+              <p><span class="font-bold text-blue-300">Tidigare erfarenhet:</span> 13 år inom psykiatrin som boendestödjare</p>
+              <p><span class="font-bold text-blue-300">Egenskaper:</span> Analytisk, empatisk, lösningsorienterad, kreativ</p>
+              <p><span class="font-bold text-blue-300">Språk:</span> Svenska, engelska</p>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+  </main>
+  
+  <script>
+    // Lägg till data-text attribut för glitch-effekt
+    document.querySelector('h1').setAttribute('data-text', document.querySelector('h1').textContent);
+    
+    // JavaScript för att hantera accordion-funktionalitet
+    document.querySelectorAll('.accordion').forEach((acc, idx) => {
+      const btn = acc.querySelector('.accordion-btn');
+      const content = acc.querySelector('.accordion-content');
+      
+      btn.addEventListener('click', () => {
+        const expanded = acc.getAttribute('aria-expanded') === 'true';
+        document.querySelectorAll('.accordion').forEach(a => {
+          a.setAttribute('aria-expanded','false');
+          a.querySelector('.accordion-btn').setAttribute('aria-expanded','false');
+        });
+        
+        if (!expanded) {
+          acc.setAttribute('aria-expanded','true');
+          btn.setAttribute('aria-expanded','true');
+          setTimeout(() => { content.focus && content.focus(); }, 200);
+        }
+      });
+      
+      // Keyboard: Space/Enter
+      btn.addEventListener('keydown', (e) => {
+        if (e.key === ' ' || e.key === 'Enter') {
+          e.preventDefault(); btn.click();
+        }
+      });
+    });
+    
+    // Skapa anpassad cursor
+    const cursor = document.createElement('div');
+    cursor.className = 'custom-cursor';
+    document.body.appendChild(cursor);
+
+    const cursorDot = document.createElement('div');
+    cursorDot.className = 'cursor-dot';
+    document.body.appendChild(cursorDot);
+
+    // Uppdatera cursor position
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = `${e.clientX}px`;
+      cursor.style.top = `${e.clientY}px`;
+      
+      // Fördröjd följning för dot
+      setTimeout(() => {
+        cursorDot.style.left = `${e.clientX}px`;
+        cursorDot.style.top = `${e.clientY}px`;
+      }, 100);
+    });
+
+    // Ändra cursor vid hover över klickbara element
+    document.querySelectorAll('a, button, .accordion-btn').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.classList.add('cursor-hover');
+        cursorDot.classList.add('dot-hover');
+      });
+      
+      el.addEventListener('mouseleave', () => {
+        cursor.classList.remove('cursor-hover');
+        cursorDot.classList.remove('dot-hover');
+      });
+    });
+
+    // Dölj standard cursor
+    document.body.style.cursor = 'none';
+    
+    // Kontakt-knapp
+    const toggleBtn = document.getElementById('toggleContact');
+    const info = document.getElementById('contactInfo');
+    
+    if (toggleBtn && info) {
+      toggleBtn.addEventListener('click', () => {
+        const show = !info.classList.contains('show');
+        info.classList.toggle('show', show);
+        toggleBtn.setAttribute('aria-expanded', show ? 'true' : 'false');
+        toggleBtn.innerText = show ? "Dölj kontaktuppgifter" : "Visa kontaktuppgifter";
+        if(show) info.focus();
+      });
+      
+      toggleBtn.addEventListener('keydown', (e) => {
+        if(e.key==="Enter"||e.key==" ") { e.preventDefault(); toggleBtn.click();}
+      });
+    }
+    
+    // Animera element när de blir synliga
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
+    });
+    
+    // Lägg till lite slumpmässiga glitch-effekter
+    function randomGlitch() {
+      const elements = document.querySelectorAll('h2, .accordion-btn');
+      const randomElement = elements[Math.floor(Math.random() * elements.length)];
+      
+      randomElement.classList.add('glitch-effect');
+      setTimeout(() => {
+        randomElement.classList.remove('glitch-effect');
+      }, 200);
+      
+      setTimeout(randomGlitch, Math.random() * 10000 + 5000);
+    }
+    
+    setTimeout(randomGlitch, 3000);
+    
+    // Partiklar i bakgrunden
+    const canvas = document.getElementById('particles-canvas');
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    // Anpassa canvas när fönstret ändrar storlek
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+
+    // Partiklar
+    const particles = [];
+    const particleCount = Math.min(width * height / 5000, 200); // Fördubblat antal partiklar
+    let mouseX = 0;
+    let mouseY = 0;
+
+    // Spåra musposition
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    // Skapa partiklar
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        size: Math.random() * 4 + 2, // Större partiklar
+        speedX: Math.random() * 2 - 1, // Dubbelt så snabba
+        speedY: Math.random() * 2 - 1, // Dubbelt så snabba
+        color: Math.random() > 0.5 ? '#00a6ed' : '#ff7b00',
+        opacity: Math.random() * 0.6 + 0.4, // Högre opacitet
+        gravity: 0.03,
+        bounce: 0.8,
+        mass: Math.random() * 3 + 1
+      });
+    }
+
+    // Animera partiklar
+    function animateParticles() {
+      ctx.clearRect(0, 0, width, height);
+      
+      particles.forEach(p => {
+        // Rörelse
+        p.x += p.speedX;
+        p.y += p.speedY;
+        
+        // Påverkas av musposition
+        const dx = mouseX - p.x;
+        const dy = mouseY - p.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        if (distance < 200) { // Större påverkansområde
+          const angle = Math.atan2(dy, dx);
+          const force = (200 - distance) / 1000; // Starkare kraft
+          p.speedX += Math.cos(angle) * force;
+          p.speedY += Math.sin(angle) * force;
+        }
+        
+        // Begränsa hastighet, men inte lika mycket (0.99 istället för 0.98)
+        p.speedX *= 0.99;
+        p.speedY *= 0.99;
+        
+        // Lägg till gravitation
+        p.speedY += p.gravity / p.mass;
+        
+        // Förbättrad kollisionshantering
+        if (p.x < 0) {
+          p.x = 0;
+          p.speedX *= -p.bounce;
+        } else if (p.x > width) {
+          p.x = width;
+          p.speedX *= -p.bounce;
+        }
+        
+        if (p.y < 0) {
+          p.y = 0;
+          p.speedY *= -p.bounce;
+        } else if (p.y > height) {
+          p.y = height;
+          p.speedY *= -p.bounce;
+        }
+        
+        // Rita partikel
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = p.color + Math.floor(p.opacity * 255).toString(16).padStart(2, '0');
+        ctx.fill();
+        
+        // Rita linjer mellan närliggande partiklar
+        particles.forEach(p2 => {
+          const dx = p.x - p2.x;
+          const dy = p.y - p2.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          
+          if (distance < 150) { // Längre linjer
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = `rgba(${p.color === '#00a6ed' ? '0, 166, 237' : '255, 123, 0'}, ${0.15 * (1 - distance / 150)})`; // Mer synliga linjer
+            ctx.lineWidth = 0.8; // Tjockare linjer
+            ctx.stroke();
+          }
+        });
+      });
+      
+      requestAnimationFrame(animateParticles);
+    }
+
+    // Starta animationen
+    animateParticles();
+
+    // Rörlig ljuseffekt som följer muspekaren
+    const movingLight = document.querySelector('.light-effect.moving');
+    window.addEventListener('mousemove', (e) => {
+      if (movingLight) {
+        // Fördröjd följning för mjukare rörelse
+        setTimeout(() => {
+          movingLight.style.left = `${e.clientX}px`;
+          movingLight.style.top = `${e.clientY}px`;
+        }, 100);
+      }
+    });
+    
+    // Interaktiv bakgrund med musspårning
+    let mouseTrailTimeout;
+    const mouseTrails = [];
+    const maxTrails = 10;
+
+    window.addEventListener('mousemove', (e) => {
+      // Skapa ny trail
+      clearTimeout(mouseTrailTimeout);
+      
+      const trail = document.createElement('div');
+      trail.className = 'mouse-trail';
+      trail.style.left = `${e.clientX}px`;
+      trail.style.top = `${e.clientY}px`;
+      trail.style.backgroundColor = Math.random() > 0.5 ? 
+        'rgba(0, 166, 237, 0.3)' : 'rgba(255, 123, 0, 0.3)';
+      document.body.appendChild(trail);
+      
+      mouseTrails.push(trail);
+      
+      // Ta bort äldsta trail om vi har för många
+      if (mouseTrails.length > maxTrails) {
+        const oldTrail = mouseTrails.shift();
+        oldTrail.remove();
+      }
+      
+      // Animera och ta bort trail efter en stund
+      setTimeout(() => {
+        trail.style.transform = 'scale(3)';
+        trail.style.opacity = '0';
+        
+        setTimeout(() => {
+          trail.remove();
+          const index = mouseTrails.indexOf(trail);
+          if (index > -1) mouseTrails.splice(index, 1);
+        }, 1000);
+      }, 10);
+      
+      // Uppdatera ljuseffekter baserat på musposition
+      mouseTrailTimeout = setTimeout(() => {
+        document.querySelectorAll('.light-beam').forEach((beam, index) => {
+          beam.style.transform = `rotate(${45 + (e.clientX * 0.02)}deg)`;
+        });
+      }, 100);
+    });
+    
+    // Parallax scrollning effekt
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      
+      // Parallax för bakgrundselement
+      document.querySelectorAll('.light-effect').forEach((light, index) => {
+        const speed = 0.05 + (index * 0.02);
+        const yPos = -(scrollY * speed);
+        light.style.transform = `translateY(${yPos}px)`;
+      });
+      
+      // Parallax för profilbild
+      const profilePic = document.querySelector('.profile-pic');
+      if (profilePic) {
+        profilePic.style.transform = `translateY(${scrollY * 0.1}px) rotate(${scrollY * 0.02}deg)`;
+      }
+      
+      // Parallax för rubriker
+      document.querySelectorAll('h2').forEach((heading, index) => {
+        const speed = 0.08;
+        const xPos = Math.sin(scrollY * 0.001) * 15;
+        heading.style.transform = `translateX(${xPos}px)`;
+      });
+    });
+  </script>
+</body>
+</html>
