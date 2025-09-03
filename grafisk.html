@@ -862,6 +862,14 @@
       outline-offset: 2px;
     }
     
+    /* Underline klass */
+    .underline {
+      text-decoration: underline;
+      text-decoration-color: var(--accent);
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
+    }
+    
     /* Responsivitet */
     @media (max-width: 700px) {
       body { font-size: 1rem; }
@@ -1021,12 +1029,12 @@
     <section id="bidrag">
       <h2>Vad jag kan bidra med</h2>
       <ul class="skills-list">
-        <li>Nyfikenhet, driv och förmåga att förstå användaren på riktigt</li>
-        <li>Erfarenhet av research, analys, prototypande och presentation</li>
-        <li>Starkt engagemang för tillgänglighet och inkluderande lösningar</li>
-        <li>Vana av samarbete, feedback och problemlösning i grupp</li>
-        <li>Förmåga att omsätta komplexa utmaningar till tydliga, användarvänliga koncept</li>
-        <li>Snabb på att lära mig nya verktyg och arbetssätt</li>
+        <li>Nyfikenhet, driv och förmåga att förstå användaren på riktigt.</li>
+        <li>Erfarenhet av research, analys, prototypande och presentation.</li>
+        <li>Starkt engagemang för tillgänglighet och inkluderande lösningar.</li>
+        <li>Vana av samarbete, feedback och problemlösning i grupp.</li>
+        <li>Förmåga att omsätta komplexa utmaningar till tydliga, användarvänliga koncept.</li>
+        <li>Snabb på att lära mig nya verktyg och arbetssätt.</li>
       </ul>
     </section>
 
@@ -1038,25 +1046,25 @@
       <div class="contact-info hidden text-white text-lg" id="contactInfo" tabindex="-1" aria-live="polite">
         <dl class="space-y-6">
           <div class="animate-fade-in">
-            <dt class="font-bold text-blue-300 text-xl mb-2">Personlig information</dt>
+            <dt class="font-bold text-blue-300 text-xl mb-3 underline">Personlig information</dt>
             <dd class="pl-4 space-y-2">
               <p><span class="font-bold text-blue-300">Mail:</span> <a href="mailto:patrikthilen@gmail.com" class="text-purple-300 hover:text-purple-100 transition-colors">patrikthilen@gmail.com</a></p>
               <p><span class="font-bold text-blue-300">LinkedIn:</span> <a class="text-purple-300 hover:text-purple-100 transition-colors" href="https://www.linkedin.com/in/patrik-thilen-119263169/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin" aria-hidden="true" style="margin-right:0.35em;"></i>Patrik Thilen</a></p>
             </dd>
           </div>
           <div class="animate-fade-in">
-            <dt class="font-bold text-blue-300 text-xl mb-2">Utbildning</dt>
+            <dt class="font-bold text-blue-300 text-xl mb-3 underline">Utbildning</dt>
             <dd class="pl-4 space-y-2">
-              <p>Social omsorg, Karlstad universitet</p>
-              <p>UX Design, Futuregames, Karlstad</p>
+              <p>Social omsorg, Karlstad universitet.</p>
+              <p>UX Design, Futuregames, Karlstad.</p>
             </dd>
           </div>
           <div class="animate-fade-in">
-            <dt class="font-bold text-blue-300 text-xl mb-2">Erfarenhet och kompetenser</dt>
+            <dt class="font-bold text-blue-300 text-xl mb-3 underline">Erfarenhet och kompetenser</dt>
             <dd class="pl-4 space-y-2">
-              <p><span class="font-bold text-blue-300">Tidigare erfarenhet:</span> 13 år inom psykiatrin som boendestödjare</p>
-              <p><span class="font-bold text-blue-300">Egenskaper:</span> Analytisk, empatisk, lösningsorienterad, kreativ</p>
-              <p><span class="font-bold text-blue-300">Språk:</span> Svenska, engelska</p>
+              <p><span class="font-bold text-blue-300">Tidigare erfarenhet:</span> 13 år inom psykiatrin som boendestödjare.</p>
+              <p><span class="font-bold text-blue-300">Egenskaper:</span> Analytisk, empatisk, lösningsorienterad, kreativ.</p>
+              <p><span class="font-bold text-blue-300">Språk:</span> Svenska, engelska.</p>
             </dd>
           </div>
         </dl>
@@ -1192,7 +1200,7 @@
 
     // Partiklar
     const particles = [];
-    const particleCount = Math.min(width * height / 5000, 200); // Fördubblat antal partiklar
+    const particleCount = Math.min(Math.floor(width * height / 12000), 120); // Färre partiklar för bättre prestanda
     let mouseX = 0;
     let mouseY = 0;
 
@@ -1204,14 +1212,18 @@
 
     // Skapa partiklar
     for (let i = 0; i < particleCount; i++) {
+      const color = Math.random() > 0.5 ? '#00a6ed' : '#ff7b00';
+      const opacity = Math.random() * 0.6 + 0.4; // Högre opacitet
+      const fillStyle = color + Math.floor(opacity * 255).toString(16).padStart(2, '0');
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
         size: Math.random() * 4 + 2, // Större partiklar
         speedX: Math.random() * 2 - 1, // Dubbelt så snabba
         speedY: Math.random() * 2 - 1, // Dubbelt så snabba
-        color: Math.random() > 0.5 ? '#00a6ed' : '#ff7b00',
-        opacity: Math.random() * 0.6 + 0.4, // Högre opacitet
+        color,
+        opacity,
+        fillStyle,
         gravity: 0.03,
         bounce: 0.8,
         mass: Math.random() * 3 + 1
@@ -1222,69 +1234,64 @@
     function animateParticles() {
       ctx.clearRect(0, 0, width, height);
       
-      particles.forEach(p => {
+      const threshold = 130; // något kortare än 150 för färre linjer
+      const threshold2 = threshold * threshold;
+      
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
         // Rörelse
         p.x += p.speedX;
         p.y += p.speedY;
         
         // Påverkas av musposition
-        const dx = mouseX - p.x;
-        const dy = mouseY - p.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
+        const dxm = mouseX - p.x;
+        const dym = mouseY - p.y;
+        const distMouse = Math.hypot(dxm, dym);
         
-        if (distance < 200) { // Större påverkansområde
-          const angle = Math.atan2(dy, dx);
-          const force = (200 - distance) / 1000; // Starkare kraft
+        if (distMouse < 200) { // Större påverkansområde
+          const angle = Math.atan2(dym, dxm);
+          const force = (200 - distMouse) / 1000; // Starkare kraft
           p.speedX += Math.cos(angle) * force;
           p.speedY += Math.sin(angle) * force;
         }
         
-        // Begränsa hastighet, men inte lika mycket (0.99 istället för 0.98)
+        // Begränsa hastighet
         p.speedX *= 0.99;
         p.speedY *= 0.99;
         
-        // Lägg till gravitation
+        // Gravitation
         p.speedY += p.gravity / p.mass;
         
-        // Förbättrad kollisionshantering
-        if (p.x < 0) {
-          p.x = 0;
-          p.speedX *= -p.bounce;
-        } else if (p.x > width) {
-          p.x = width;
-          p.speedX *= -p.bounce;
-        }
-        
-        if (p.y < 0) {
-          p.y = 0;
-          p.speedY *= -p.bounce;
-        } else if (p.y > height) {
-          p.y = height;
-          p.speedY *= -p.bounce;
-        }
+        // Väggkollisioner
+        if (p.x < 0) { p.x = 0; p.speedX *= -p.bounce; }
+        else if (p.x > width) { p.x = width; p.speedX *= -p.bounce; }
+        if (p.y < 0) { p.y = 0; p.speedY *= -p.bounce; }
+        else if (p.y > height) { p.y = height; p.speedY *= -p.bounce; }
         
         // Rita partikel
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = p.color + Math.floor(p.opacity * 255).toString(16).padStart(2, '0');
+        ctx.fillStyle = p.fillStyle; // använd förberäknad färg med alpha
         ctx.fill();
         
-        // Rita linjer mellan närliggande partiklar
-        particles.forEach(p2 => {
+        // Rita linjer mellan närliggande partiklar (bara framåt j=i+1 för att halvera antalet par)
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
           const dx = p.x - p2.x;
           const dy = p.y - p2.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
+          const dist2 = dx * dx + dy * dy;
           
-          if (distance < 150) { // Längre linjer
+          if (dist2 < threshold2) {
+            const distance = Math.sqrt(dist2); // bara räkna sqrt när det behövs
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(${p.color === '#00a6ed' ? '0, 166, 237' : '255, 123, 0'}, ${0.15 * (1 - distance / 150)})`; // Mer synliga linjer
-            ctx.lineWidth = 0.8; // Tjockare linjer
+            ctx.strokeStyle = `rgba(${p.color === '#00a6ed' ? '0, 166, 237' : '255, 123, 0'}, ${0.15 * (1 - distance / threshold)})`;
+            ctx.lineWidth = 0.8;
             ctx.stroke();
           }
-        });
-      });
+        }
+      }
       
       requestAnimationFrame(animateParticles);
     }
