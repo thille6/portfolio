@@ -2,11 +2,17 @@
 <html lang="sv">
 <head>
   <meta charset="UTF-8">
-  <title>Patrik Thilen – UX Portfolio (Grafisk version)</title>
+  <title>Patrik Thilen – Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="UX-portfolio för Patrik Thilen, UX-student och framtida designer. Grafisk version med animationer och effekter.">
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Jag arbetar med att skapa tydlighet där det annars blir komplext. Projekt inom struktur, tillgänglighet och lösningar som fungerar i praktiken.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    html, body {
+      overflow-y: auto;
+    }
+    
     :root {
       --primary: #00a6ed;
       --primary-dark: #0a4263;
@@ -25,6 +31,15 @@
       --primary-gradient: linear-gradient(135deg, #00a6ed, #0062a3);
       --glitch-blue: rgba(0, 166, 237, 0.5);
       --glitch-orange: rgba(255, 123, 0, 0.5);
+      --card-radius: 16px;
+      --card-border: rgba(255,255,255,0.08);
+      --card-border-hover: rgba(255,255,255,0.14);
+      --card-surface-top: rgba(255,255,255,0.045);
+      --card-surface-bottom: rgba(255,255,255,0.02);
+      --card-shadow:
+        0 14px 36px rgba(0,0,0,0.26);
+      --card-shadow-hover:
+        0 20px 52px rgba(0,0,0,0.32);
     }
     
     /* Anpassad cursor */
@@ -172,11 +187,11 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Barlow', sans-serif;
-      font-size: 1.09rem;
-      line-height: 1.7;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
       min-height: 100vh;
-      letter-spacing: 0.01em;
+      letter-spacing: 0;
       position: relative;
       overflow-x: hidden;
     }
@@ -303,7 +318,7 @@
       border-radius: var(--radius);
       font-size: 0.9rem;
       font-weight: 600;
-      font-family: 'Rajdhani', sans-serif;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       text-transform: uppercase;
       letter-spacing: 1px;
       transition: all 0.3s ease;
@@ -441,11 +456,12 @@
     }
 
     header h1 {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 2.5rem;
-      margin-bottom: 0.2rem;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size: clamp(32px, 4vw, 44px);
+      margin: 0 0 12px 0;
       font-weight: 700;
-      letter-spacing: 1px;
+      line-height: 1.12;
+      letter-spacing: -0.01em;
       text-transform: uppercase;
       position: relative;
       display: inline-block;
@@ -494,13 +510,54 @@
     }
     
     header p {
-      font-size: 1.15rem;
-      color: var(--muted);
-      margin-bottom: 1.2em;
-      animation: fadeIn 1.2s ease-out;
-      max-width: 600px;
+      font-size: clamp(1.06rem, 1.6vw, 1.16rem);
+      line-height: 1.86;
+      font-weight: 500;
+      letter-spacing: 0.014em;
+      color: var(--text);
+      opacity: 0.92;
+      margin-bottom: 0.95em;
+      max-width: 54ch;
       margin-left: auto;
       margin-right: auto;
+      text-wrap: balance;
+      text-shadow: 0 1px 0 rgba(0,0,0,0.28), 0 10px 30px rgba(0,0,0,0.22), 0 0 16px rgba(0,166,237,0.22);
+      opacity: 0;
+      animation: premiumTextReveal 820ms cubic-bezier(.2,.75,.2,1) forwards;
+    }
+    header p:first-of-type {
+      font-size: clamp(1.2rem, 2.3vw, 1.34rem);
+      line-height: 1.65;
+      font-weight: 650;
+      letter-spacing: 0.004em;
+      color: var(--text);
+      opacity: 1;
+      text-shadow: 0 1px 0 rgba(0,0,0,0.34), 0 0 26px rgba(0,166,237,0.34);
+      animation-delay: 160ms;
+    }
+    header p:nth-of-type(2) { animation-delay: 340ms; }
+    header p:nth-of-type(3) { animation-delay: 520ms; }
+    @keyframes premiumTextReveal {
+      0% {
+        opacity: 0;
+        transform: translateY(14px);
+        filter: blur(6px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+    }
+    @keyframes premiumLineReveal {
+      0% {
+        opacity: 0;
+        transform: translateX(-50%) scaleX(0.65);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(-50%) scaleX(1);
+      }
     }
     
     .profile-pic {
@@ -570,7 +627,7 @@
       color: var(--text);
       text-decoration: none;
       font-weight: 600;
-      font-family: 'Rajdhani', sans-serif;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       text-transform: uppercase;
       letter-spacing: 1px;
       padding: 0.3rem 0.9rem;
@@ -625,12 +682,11 @@
       border: 1px solid var(--primary-dark);
       border-radius: var(--radius);
       padding: 2rem;
-      margin-bottom: 2rem;
+      margin-bottom: 2.4rem;
       box-shadow: var(--shadow);
       animation: fadeIn 0.8s ease-out;
       animation-fill-mode: both;
       position: relative;
-      overflow: hidden;
       transition: transform 0.5s ease, box-shadow 0.5s ease;
       transform-style: preserve-3d;
       perspective: 1000px;
@@ -660,15 +716,31 @@
     section:nth-child(5) { animation-delay: 1s; }
     
     h2 {
-      font-family: 'Rajdhani', sans-serif;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color: var(--primary);
-      font-size: 1.8rem;
-      margin-bottom: 1.5rem;
+      font-size: clamp(22px, 2.2vw, 28px);
+      margin: 0 0 12px 0;
+      font-weight: 650;
+      line-height: 1.2;
+      letter-spacing: -0.005em;
       position: relative;
       display: inline-block;
       text-transform: uppercase;
-      letter-spacing: 1px;
       z-index: 10;
+    }
+    h3 {
+      font-size: 18px;
+      line-height: 1.25;
+      font-weight: 650;
+      margin: 0 0 10px 0;
+    }
+    p {
+      font-size: 16px;
+      line-height: 1.65;
+      margin: 0 0 12px 0;
+    }
+    a, button {
+      font-family: inherit;
     }
     
     h2::after {
@@ -681,75 +753,47 @@
       background: var(--accent-gradient);
     }
     
-    /* Accordion */
+    /* Accordion - base (neutralized) */
     .accordion {
       background: rgba(10, 18, 24, 0.5);
-      border: 1px solid var(--primary-dark);
-      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
       margin-bottom: 1rem;
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      transform-style: preserve-3d;
-    }
-    
-    .accordion:hover {
-      transform: translateY(-5px) rotateX(2deg) rotateY(1deg);
-      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5), 
-              0 0 15px rgba(255, 123, 0, 0.3);
+      transition: background 180ms ease, border-color 180ms ease, box-shadow 200ms ease;
+      position: relative;
+      z-index: 1;
     }
     
     .accordion-btn {
       width: 100%;
       text-align: left;
-      padding: 1rem 1.5rem;
-      background: rgba(0, 166, 237, 0.15);
+      padding: 1.15rem 1.4rem;
+      background: transparent;
       border: none;
       color: #ffffff;
       font-size: 1.1rem;
       font-weight: 600;
-      font-family: 'Rajdhani', sans-serif;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       text-transform: uppercase;
       letter-spacing: 1px;
       cursor: pointer;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      transition: all 0.3s ease;
       position: relative;
-      overflow: hidden;
-    }
-    
-    .accordion-btn::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 4px;
-      height: 100%;
-      background: var(--primary);
-      opacity: 0.5;
-    }
-    
-    .accordion-btn:hover, .accordion-btn:focus {
-      background: rgba(255, 123, 0, 0.15);
-    }
-    
-    .accordion-btn:hover::after, .accordion-btn:focus::after {
-      background: var(--accent);
-    }
-    
-    .accordion[aria-expanded="true"] .accordion-btn {
-      background: var(--accent-gradient);
+      z-index: 2;
     }
     
     .icon {
-      transition: transform 0.3s ease;
+      transition: transform 200ms ease, opacity 180ms ease;
       font-size: 1.5rem;
       color: var(--accent);
+      opacity: 0.65;
     }
     
     .accordion[aria-expanded="true"] .icon {
       transform: rotate(90deg);
+      opacity: 1;
     }
     
     .accordion-content {
@@ -758,12 +802,18 @@
       transition: max-height 0.5s ease;
       padding: 0 1.5rem;
       background: rgba(10, 18, 24, 0.3);
+      position: relative;
+      z-index: 1;
     }
     
     .accordion[aria-expanded="true"] .accordion-content {
-      max-height: 500px;
-      padding: 1rem 1.5rem 1.5rem;
+      max-height: 2000px;
+      padding: 0.9em 1.7em 1.2em 1.7em;
     }
+
+    /* ===== CLEAN PRODUCT (PROJECT ACCORDIONS) ===== */
+    /* FINAL OVERRIDE: legacy clean-product card rules disabled; v3 is source of truth. */
+    /* ===== END CLEAN PRODUCT ===== */
     
     /* Projekt-roll styling */
     .project-role {
@@ -775,7 +825,8 @@
       border-radius: var(--radius);
       font-size: 0.9rem;
       margin-bottom: 1rem;
-      font-family: 'Rajdhani', sans-serif;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 1px;
     }
@@ -812,27 +863,149 @@
     .show-contact {
       background: var(--primary-gradient);
       color: #fff;
-      border: none;
-      border-radius: var(--radius);
-      padding: 0.5em 1.5em;
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 12px;
+      padding: 0.62em 1.2em;
       font-size: 1em;
       margin-top: 0.8em;
       cursor: pointer;
       font-weight: 600;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       min-height: 48px;
-      min-width: 150px;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 15px rgba(0, 166, 237, 0.3);
-      font-family: 'Rajdhani', sans-serif;
+      min-width: 0;
+      width: fit-content;
+      text-decoration: none;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.16s ease, box-shadow 0.2s ease;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.24);
       text-transform: uppercase;
       letter-spacing: 1px;
-      display: block; /* säkerställ ny rad under h2 */
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
     
     .show-contact:hover, .show-contact:focus {
       background: var(--accent-gradient);
-      transform: translateY(-3px);
-      box-shadow: 0 0 20px rgba(255, 123, 0, 0.4);
+      border-color: rgba(255,255,255,0.30);
+      transform: translateY(-1px);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.30);
+    }
+
+    .cards-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: 1fr;
+    }
+
+    .card {
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(14, 28, 37, 0.6);
+    }
+
+    .card-title {
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size: 16px;
+      letter-spacing: 0;
+    }
+
+    .card-text {
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .card:hover,
+    .card:focus-within,
+    .about-card:hover,
+    .about-card:focus-within {
+      border-color: rgba(0, 166, 237, 0.6);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    @media (min-width: 900px) {
+      .cards-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .about-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: 1fr;
+      margin-top: 12px;
+    }
+
+    .about-card {
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(14, 28, 37, 0.6);
+    }
+
+    .about-title {
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size: 16px;
+      letter-spacing: 0;
+    }
+
+    .about-text {
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .hero-thread {
+      font-size: clamp(1.08rem, 1.9vw, 1.2rem);
+      line-height: 1.72;
+      font-weight: 620;
+      letter-spacing: 0.004em;
+      color: var(--text);
+      margin: 0.85em auto 1.2em auto;
+      max-width: 52ch;
+      opacity: 1;
+      text-wrap: balance;
+      text-shadow: 0 1px 0 rgba(0,0,0,0.35), 0 12px 34px rgba(0,0,0,0.24), 0 0 20px rgba(255,123,0,0.24);
+      position: relative;
+      padding-bottom: 0.55rem;
+      animation: premiumTextReveal 900ms cubic-bezier(.2,.75,.2,1) forwards;
+      animation-delay: 720ms;
+    }
+    .hero-thread::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 132px;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.4), rgba(255,255,255,0));
+      opacity: 0;
+      transform: translateX(-50%);
+      animation: premiumLineReveal 820ms cubic-bezier(.2,.75,.2,1) forwards;
+      animation-delay: 980ms;
+    }
+
+    .project-decision {
+      margin-top: 0.6em;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    @media (min-width: 700px) {
+      .about-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (min-width: 1100px) {
+      .about-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
     }
     
     .cv-key {
@@ -869,6 +1042,68 @@
       text-decoration-thickness: 2px;
       text-underline-offset: 4px;
     }
+
+    /* .project-tagline removed */
+
+    .proof-points {
+      list-style: none;
+      padding: 0;
+      margin: 1.3em auto 0.2em auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem 1.2rem;
+      font-size: 0.96rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--text);
+      max-width: 780px;
+      opacity: 0.92;
+    }
+
+    .proof-points li {
+      flex: 0 0 auto;
+      min-width: 0;
+      font-weight: 600;
+      opacity: 0.9;
+      animation: premiumTextReveal 700ms cubic-bezier(.2,.75,.2,1) forwards;
+    }
+    .proof-points li:nth-child(1) { animation-delay: 980ms; }
+    .proof-points li:nth-child(2) { animation-delay: 1080ms; }
+    .proof-points li:nth-child(3) { animation-delay: 1180ms; }
+
+    .proof-points li::before {
+      content: "• ";
+      color: var(--accent);
+      font-weight: 800;
+      margin-right: 0.6em;
+      opacity: 1;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      header p,
+      .hero-thread,
+      .hero-thread::after,
+      .proof-points li {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+      }
+    }
+
+    .show-contact:focus,
+    nav a:focus,
+    .accordion-btn:focus {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .contact-intro {
+      margin-bottom: 1.2em;
+      color: var(--text);
+      font-weight: 500;
+      line-height: 1.6;
+    }
     
     /* Responsivitet */
     @media (max-width: 700px) {
@@ -876,6 +1111,449 @@
       header, section { padding: 1.5rem 1rem; }
       header h1 { font-size: 2rem; }
     }
+    
+    /* Sticky navigation for nav only */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: var(--bg);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    
+    /* Scroll margin for section anchors */
+    section {
+      scroll-margin-top: 110px;
+    }
+    
+    /* Max-width for readability */
+    main {
+      max-width: 820px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    
+    /* Project highlights and learning sections */
+    .project-highlights,
+    .project-learning {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text);
+      padding: 0.8em 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    
+    .project-highlights strong,
+    .project-learning strong {
+      color: var(--primary);
+      font-weight: 700;
+    }
+    
+    .project-learning {
+      margin-top: 0.8em;
+      border-top: none;
+      color: var(--muted);
+    }
+    
+    /* Footer */
+    footer {
+      margin-top: 3em;
+      padding-top: 2em;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      text-align: center;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+    
+    footer p {
+      margin: 0;
+    }
+    
+    /* ========== SPACING POLISH (margins/padding/gap only) ========== */
+    /* Förbättrad vertikal rytm och luftighet */
+    
+    /* Sektioner - mer luft mellan */
+    section {
+      margin-bottom: 3rem;
+    }
+    
+    /* Luft före h2 (titel) */
+    h2 {
+      margin-top: 0.5rem;
+    }
+    
+    /* Luft under h2 och före content */
+    h2 + p {
+      margin-top: 1rem;
+    }
+    
+    /* Projekt-accordions - mycket mer luftigt */
+    .project-list {
+      gap: 1.8rem;
+    }
+    
+    .accordion {
+      margin-bottom: 0;
+    }
+    
+    /* Innehål inne i accordion - mer luft */
+    /* accordion-content padding now in aria-expanded state */
+    
+    /* Luft inom accordion-content-element */
+    .project-role {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    
+    .project-highlights {
+      margin-top: 1rem;
+      margin-bottom: 0.6rem;
+    }
+    
+    .project-text {
+      margin: 0 0 0.9em 0;
+    }
+    
+    .project-text ul {
+      margin: 0.2em 0 0.9em 1.1em;
+    }
+    
+    .project-text ul li {
+      margin-bottom: 0.55em;
+    }
+    
+    .project-decision {
+      margin-top: 1rem;
+      margin-bottom: 0.4rem;
+    }
+    
+    .project-learning {
+      margin-top: 0.8rem;
+    }
+    
+    /* About-cards - jämn spacing */
+    .about-grid {
+      gap: 1.4rem;
+    }
+    
+    /* Cards-grid - god luftighet */
+    .cards-grid {
+      gap: 1.6rem;
+    }
+    
+    .card {
+      padding: 1.5rem;
+    }
+    
+    /* Kontakt-sektion - luftig och läsbar */
+    .contact-info {
+      margin-top: 1.5rem;
+    }
+    
+    .contact-info > div {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+    }
+    
+    .cv-section {
+      margin-bottom: 2rem;
+    }
+    
+    .cv-section div {
+      margin-bottom: 0.6rem;
+      line-height: 1.7;
+    }
+    
+    /* Footer - luft före */
+    footer {
+      margin-top: 4rem;
+    }
+    
+    @media (max-width: 700px) {
+      section {
+        margin-bottom: 2rem;
+      }
+      
+      .accordion {
+        margin-bottom: 1.2rem;
+      }
+      
+      .cards-grid {
+        gap: 1rem;
+      }
+      
+      .card {
+        padding: 1.2rem;
+      }
+    }
+
+    /* ===== CLICKABLE PROJECT CARDS ===== */
+    /* FINAL OVERRIDE: legacy clickable-project-card rules disabled; v3 is source of truth. */
+    /* ===== END CLICKABLE PROJECT CARDS ===== */
+
+    /* ===== PROJECT BUTTON PREVIEW ===== */
+    /* project button preview (no global typography/layout changes) */
+    .project-list .accordion-btn { padding: 0; }  /* vi lägger padding på .proj-btn istället */
+
+    .project-list .proj-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 1.15rem 1.5rem;
+    }
+
+    .project-list .proj-copy { min-width: 0; } /* så text kan brytas fint */
+
+    .project-list .proj-title {
+      font-weight: 700;
+      margin: 0 0 6px 0;
+    }
+
+    .project-list .proj-sub {
+      opacity: 0.85;
+      margin: 0 0 10px 0;
+    }
+
+    .project-list .proj-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .project-list .chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.03);
+      font-size: 0.85em;
+      opacity: 0.92;
+    }
+
+    .project-list .proj-cta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .project-list .proj-cta-text {
+      opacity: 0.8;
+      font-size: 0.9em;
+    }
+
+    .project-list .accordion:hover .proj-cta-text { opacity: 1; }
+
+    @media (max-width: 520px) {
+      .project-list .proj-cta-text { display: none; } /* på mobil bara pil */
+    }
+
+    /* ===== premium floating surface v2 (projects only) ===== */
+    /* FINAL OVERRIDE: legacy premium-v2 project rules disabled; v3 is source of truth. */
+    /* ===== end premium floating surface v2 ===== */
+
+    .project-list .accordion-btn { padding: 0; background: transparent; border: 0; width: 100%; }
+
+    .project-list .case-card{
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 16px;
+      padding: 1.2rem 1.5rem;
+    }
+
+    .project-list .case-left{ min-width:0; }
+    .project-list .case-title{ font-weight: 700; margin: 0 0 6px 0; }
+    .project-list .case-sub{ opacity: 0.82; margin: 0 0 10px 0; }
+
+    .project-list .case-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 8px;
+    }
+
+    .project-list .tag{
+      display:inline-flex;
+      align-items:center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.03);
+      opacity: 0.92;
+      font-size: 0.85em;
+    }
+
+    .project-list .case-right{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      flex-shrink:0;
+    }
+
+    .project-list .case-cta{
+      opacity: 0.8;
+      font-size: 0.9em;
+    }
+
+    /* FINAL OVERRIDE: legacy icon pill style disabled.
+    .project-list .icon{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.02);
+      opacity: 0.85;
+      transition: transform 200ms ease, opacity 160ms ease, background 200ms ease, border-color 200ms ease;
+    }
+    */
+
+    .project-list .accordion:hover .case-cta{ opacity: 1; }
+    /* FINAL OVERRIDE: legacy icon hover style disabled.
+    .project-list .accordion:hover .icon{
+      opacity: 1;
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.16);
+    }
+    */
+
+    .project-list .accordion[aria-expanded="true"] .icon{
+      transform: rotate(90deg);
+    }
+
+    @media (max-width: 520px){
+      .project-list .case-cta{ display:none; }
+    }
+
+    body:not(.dark-mode) .project-list .tag{
+      border-color: rgba(0,0,0,0.12);
+      background: rgba(0,0,0,0.02);
+    }
+    /* FINAL OVERRIDE: legacy light-mode icon style disabled.
+    body:not(.dark-mode) .project-list .icon{
+      border-color: rgba(0,0,0,0.12);
+      background: rgba(0,0,0,0.02);
+    }
+    */
+    /* ===== Project cards v3 (Linear/Apple feel) ===== */
+    .project-list .accordion {
+      position: relative;
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      background: linear-gradient(
+        180deg,
+        var(--card-surface-top),
+        var(--card-surface-bottom)
+      );
+      border: 1px solid var(--card-border);
+      box-shadow:
+        0 14px 36px rgba(0,0,0,0.26),
+        inset 0 1px 0 rgba(255,255,255,0.10),
+        inset 0 -1px 0 rgba(0,0,0,0.55);
+      transition:
+        transform 180ms cubic-bezier(.2,.8,.2,1),
+        box-shadow 220ms ease,
+        border-color 200ms ease;
+    }
+
+    .project-list .accordion::before,
+    .project-list .accordion::after {
+      content: none;
+    }
+
+    .project-list .accordion:hover {
+      transform: translateY(-1px);
+      border-color: var(--card-border-hover);
+      box-shadow:
+        var(--card-shadow-hover),
+        inset 0 1px 0 rgba(255,255,255,0.12),
+        inset 0 -1px 0 rgba(0,0,0,0.65);
+    }
+
+    .project-list .accordion[aria-expanded="true"] {
+      border-color: var(--card-border-hover);
+      box-shadow:
+        var(--card-shadow-hover),
+        inset 0 1px 0 rgba(255,255,255,0.12),
+        inset 0 -1px 0 rgba(0,0,0,0.65);
+    }
+
+    .project-list .accordion:first-child {
+      border-color: rgba(255,255,255,0.18);
+      background: linear-gradient(
+        180deg,
+        rgba(255,255,255,0.06),
+        rgba(255,255,255,0.025)
+      );
+    }
+
+    .project-list .accordion:active {
+      transform: translateY(0);
+    }
+
+    .project-list .accordion-btn {
+      background: transparent;
+      border: 0;
+      width: 100%;
+      cursor: pointer;
+    }
+
+    .project-list .accordion-btn:focus-visible {
+      outline: 2px solid rgba(255,255,255,0.22);
+      outline-offset: 4px;
+    }
+
+    .project-list .case-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
+      transition:
+        background 200ms ease,
+        border-color 200ms ease,
+        transform 160ms ease;
+    }
+
+    .project-list .accordion:hover .case-cta {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.18);
+      transform: translateX(2px);
+    }
+
+    .project-list .icon {
+      width: auto;
+      height: auto;
+      border: none;
+      background: none;
+      border-radius: 0;
+      transition: transform 200ms ease;
+    }
+
+    .project-list .accordion[aria-expanded="true"] .icon {
+      transform: rotate(90deg);
+    }
+
+    .project-list .case-card {
+      padding: 1.35rem 1.6rem;
+    }
+
+    .project-list .case-title { margin-bottom: 8px; }
+    .project-list .case-sub { margin-bottom: 14px; }
+
+    /* FINAL OVERRIDE: no mode-specific project-card/icon overrides; v3 base rules are single source. */
+    /* ===== End Project cards v3 ===== */
+
+    /* ===== END PROJECT BUTTON PREVIEW ===== */
   </style>
 </head>
 <body>
@@ -897,149 +1575,224 @@
     
     <img src="profile.jpg" alt="Profilbild av Patrik Thilen" class="profile-pic">
     <h1 data-text="Patrik Thilen">Patrik Thilen</h1>
-    <p>UX-student med passion för empati, digitalt tänk och framtidens användarupplevelser.</p>
+    <p>Jag arbetar med att skapa tydlighet där det annars blir komplext.</p>
+    <p>Jag försöker alltid se helheten – hur information, steg och beslut hänger ihop i verkligheten.</p>
+    <p>När något känns logiskt, lugnt och självklart att använda vet jag att det fungerar.</p>
+    <p class="hero-thread">Jag tittar efter var det blir oklart – och gör det lättare att ta nästa steg.</p>
+    <ul class="proof-points">
+      <li>Tre utvalda case</li>
+      <li>Prototyp i HTML/CSS/JS</li>
+      <li>Tydlighet och helhet</li>
+    </ul>
+    <a href="#projekt" class="show-contact" aria-label="Gå till projekten">Se projekt ↓</a>
     
     <nav aria-label="Huvudnavigation">
-      <a href="#om-mig" class="active">Om mig</a>
-      <a href="#projekt">Projekt</a>
-      <a href="#process">Så här jobbar jag</a>
-      <a href="#bidrag">Vad jag kan bidra med</a>
-      <a href="#kontakt">CV & Kontakt</a>
+      <a href="#projekt" class="active">Projekt</a>
+      <a href="#om-mig">Om mig</a>
+      <a href="#process">Hur jag jobbar</a>
+      <a href="#bidrag">Styrkor</a>
+      <a href="#kontakt">Kontakt</a>
     </nav>
   </header>
   
   <main>
-    <section id="om-mig" class="about">
-      <h2>Om mig</h2>
-      <p>
-        <strong>Kreativ UX-student</strong> med erfarenhet från både <strong>social omsorg</strong> och digital design.<br>
-        <br>
-        Jag har över 13 års erfarenhet av att arbeta med människor inom psykiatrin, vilket har gett mig en djup förståelse för <strong>kommunikation, empati</strong> och hur digitala tjänster kan förenkla människors vardag.<br>
-        <br>
-        Jag trivs både självständigt och i team, och brinner för att skapa lösningar som verkligen möter användarnas behov – med <strong>tydlig struktur, tillgänglighet</strong> och öppenhet för feedback. Mitt mål är att bidra med mitt engagemang, min nyfikenhet och min förmåga att alltid se saker ur användarens perspektiv.
-      </p>
-    </section>
-
     <section id="projekt" aria-labelledby="projekt-heading">
       <h2 id="projekt-heading">Mina projekt</h2>
+      <p>Här är tre projekt jag är mest stolt över. De visar hur jag tänker, förenklar och skapar struktur.</p>
       <div class="project-list" role="list">
-        <!-- Accordion-projekt -->
+        <h3>Utvalda projekt</h3>
         <div class="accordion" aria-expanded="false">
-          <button class="accordion-btn" aria-controls="project1" aria-expanded="false">
-            Care to Translate – UX för industrin
-            <span class="icon" aria-hidden="true">›</span>
+          <button id="project1-title" class="accordion-btn" aria-controls="project1" aria-expanded="false">
+            <div class="case-card">
+              <div class="case-left">
+                <div class="case-title">NIFA – Ny struktur för webbplatsen</div>
+                <div class="case-sub">Omstrukturering, prototyp och test</div>
+                <div class="case-tags">
+                  <span class="tag">TEAM</span>
+                  <span class="tag">STRUKTUR</span>
+                  <span class="tag">WEBB</span>
+                </div>
+              </div>
+
+              <div class="case-right">
+                <div class="case-cta">
+                  <span class="cta-label">Visa</span>
+                  <span class="icon" aria-hidden="true">›</span>
+                </div>
+              </div>
+            </div>
           </button>
           <div id="project1" class="accordion-content" role="region" aria-labelledby="project1-title">
-            <div class="project-role">Roll: UX-designer, Research, Analys</div>
+            <div class="project-role">Roll: Struktur, innehållsordning, prototyp &amp; test (team)</div>
+            <div class="project-highlights"><strong>Highlights:</strong> Team · Fokus: struktur och tydlighet · Leverans: prototyp + test</div>
             <div class="project-text">
               <ul>
-                <li>Fokus på hur språkbarriärer påverkar säkerhet och produktion inom industrin.</li>
-                <li>Intervjuer, enkäter och insiktsarbete kring missförstånd, felöversatta termer och oro att göra fel.</li>
-                <li>Prototyp för förbättrad onboarding och AI-stöd för yrkesspråk.</li>
-                <li><strong>Mitt bidrag:</strong> Intervjuer, analys, användarresa, workshops, persona-framtagning.</li>
+                <li>Gick igenom den gamla webbplatsen och hittade var nya besökare tappade förståelsen.</li>
+                <li>Byggde om startsidan så att man snabbt förstår vad NIFA är och hur medlemskap hänger ihop med behov.</li>
+                <li>Skapade prototyp och justerade utifrån feedback (ordning, luft, rubriker och tydlighet).</li>
+                <li><strong>Resultat:</strong> lättare att hitta rätt och enklare att förstå medlemskap tidigt.</li>
               </ul>
-              <div class="quote">"Det finns ett stort behov av tekniskt korrekt översättningsprogram anpassat för industrin. Med rätt verktyg kan både säkerhet och produktivitet öka."</div>
+              <p class="project-decision"><strong>Beslut:</strong> Medlemskap lyftes tidigt i startsidan eftersom nya besökare annars inte förstod hur de kunde engagera sig.</p>
+              <div class="project-learning"><strong>Lärdom:</strong> Små ändringar i ordning och rubriker gjorde störst skillnad.</div>
             </div>
           </div>
         </div>
+
         <div class="accordion" aria-expanded="false">
-          <button class="accordion-btn" aria-controls="project2" aria-expanded="false">
-            H&M – Hållbara onlineköp och minskade returer
-            <span class="icon" aria-hidden="true">›</span>
+          <button id="project2-title" class="accordion-btn" aria-controls="project2" aria-expanded="false">
+            <div class="case-card">
+              <div class="case-left">
+                <div class="case-title">Tillgänglig musikspelare – prototyp i HTML/CSS/JS</div>
+                <div class="case-sub">Tillgänglig prototyp byggd i kod</div>
+                <div class="case-tags">
+                  <span class="tag">SOLO</span>
+                  <span class="tag">TILLGÄNGLIGHET</span>
+                  <span class="tag">KOD</span>
+                </div>
+              </div>
+
+              <div class="case-right">
+                <div class="case-cta">
+                  <span class="cta-label">Visa</span>
+                  <span class="icon" aria-hidden="true">›</span>
+                </div>
+              </div>
+            </div>
           </button>
           <div id="project2" class="accordion-content" role="region" aria-labelledby="project2-title">
-            <div class="project-role">Roll: UX-design, UI-design, användbarhetstester | <em>Fiktivt case</em></div>
+            <div class="project-role">Roll: Självständigt projekt – research, design, kod &amp; test</div>
+            <div class="project-highlights"><strong>Highlights:</strong> Solo · Fokus: kontroll och tillgänglighet · Leverans: HTML/CSS/JS-prototyp</div>
             <div class="project-text">
               <ul>
-                <li>Fiktivt koncept utvecklat som skolprojekt för att utforska hållbarhetslösningar inom e-handel.</li>
-                <li>Prototyp för hållbar e-handel, med 3D-modell för storleksprovning, miljöpoäng och community.</li>
-                <li>Research, användartester, grafisk profil.</li>
-                <li><strong>Mitt bidrag:</strong> UI-design, struktur, research, tillgänglighetsanpassning.</li>
+                <li>Utgick från vanliga hinder i musikappar och byggde en enkel spelare där allt går att använda med tangentbord.</li>
+                <li>La fokus på tydliga fokusmarkeringar, bra kontrast, beskrivande etiketter och ingen autoplay.</li>
+                <li>Testade mot olika behov och itererade (bl.a. fixade en bug där textstorlek inte ändrades som tänkt).</li>
+                <li><strong>Resultat:</strong> en lugn och förutsägbar prototyp som ger användaren mer kontroll.</li>
               </ul>
-              <div class="quote">"Med digitala hjälpmedel och belöningssystem kan vi göra hållbart mode både enklare och roligare för användaren."</div>
+              <p class="project-decision"><strong>Beslut:</strong> Jag tog bort autoplay och gjorde allt tangentbordsstyrt för att öka kontroll och lugn.</p>
+              <div class="project-learning"><strong>Lärdom:</strong> Tillgänglighet är ofta kontroll och förutsägbarhet, inte fler funktioner.</div>
             </div>
           </div>
         </div>
+
         <div class="accordion" aria-expanded="false">
-          <button class="accordion-btn" aria-controls="project3" aria-expanded="false">
-            Academedia – Digitalisering av samtalskort
-            <span class="icon" aria-hidden="true">›</span>
+          <button id="project3-title" class="accordion-btn" aria-controls="project3" aria-expanded="false">
+            <div class="case-card">
+              <div class="case-left">
+                <div class="case-title">Kaffesnurran – en enkel sak som får samtal att hända</div>
+                <div class="case-sub">Koncept och test för samtal i fikapausen</div>
+                <div class="case-tags">
+                  <span class="tag">TEAM</span>
+                  <span class="tag">SAMTALSFLÖDE</span>
+                  <span class="tag">PROTOTYP</span>
+                </div>
+              </div>
+
+              <div class="case-right">
+                <div class="case-cta">
+                  <span class="cta-label">Visa</span>
+                  <span class="icon" aria-hidden="true">›</span>
+                </div>
+              </div>
+            </div>
           </button>
           <div id="project3" class="accordion-content" role="region" aria-labelledby="project3-title">
-            <div class="project-role">Roll: UX-design, koncept, prototyp</div>
+            <div class="project-role">Roll: Research, koncept, prototyp &amp; test (team)</div>
+            <div class="project-highlights"><strong>Highlights:</strong> Team · Fokus: socialt flyt · Leverans: fysisk prototyp + test</div>
             <div class="project-text">
               <ul>
-                <li>Koncept och prototyp för att digitalisera samtalskort om psykisk hälsa och värdegrund för unga.</li>
-                <li>Fokus på trygghet och interaktivitet.</li>
-                <li><strong>Mitt bidrag:</strong> Idégenerering, personas, användarresa, prototypdesign.</li>
+                <li>Intervjuer visade att fikapausen uppskattas, men ofta blir kort och uppdelad – nya personer hamnar lätt utanför.</li>
+                <li>Vi tog fram en enkel “snurra” med frågor som startar samtal utan att det känns krystat.</li>
+                <li>Testade teman och ton: vissa frågor behövde bli mindre personliga för att kännas trygga.</li>
+                <li><strong>Resultat:</strong> låg tröskel att vara med och mer naturlig kontakt i rummet.</li>
               </ul>
-              <div class="quote">"Teknik kan öppna upp svåra samtal – men det är empati och trygghet som får unga att våga dela."</div>
+              <p class="project-decision"><strong>Beslut:</strong> Vi gjorde frågorna mindre personliga för att sänka tröskeln och få fler att våga vara med.</p>
+              <div class="project-learning"><strong>Lärdom:</strong> Ton är viktigare än "roliga frågor" för att få fler att våga delta.</div>
             </div>
           </div>
         </div>
-        <div class="accordion" aria-expanded="false">
-          <button class="accordion-btn" aria-controls="project4" aria-expanded="false">
-            Alfred Nobel Björkborn – Nytt museikoncept för unga
-            <span class="icon" aria-hidden="true">›</span>
-          </button>
-          <div id="project4" class="accordion-content" role="region" aria-labelledby="project4-title">
-            <div class="project-role">Roll: UX, målgruppsanalys, konceptutveckling</div>
-            <div class="project-text">
-              <ul>
-                <li>Digitalt och interaktivt besökskoncept för unga på museum.</li>
-                <li>Quiz, gamification, sociala medier och målgruppsanalys.</li>
-                <li><strong>Mitt bidrag:</strong> Användarresa, lösningsförslag, analys och rekommendationer.</li>
-              </ul>
-              <div class="quote">"Engagerande innehåll och interaktiva lösningar är vägen till ungas intresse."</div>
-            </div>
-          </div>
-        </div>
-        <div class="accordion" aria-expanded="false">
-          <button class="accordion-btn" aria-controls="project5" aria-expanded="false">
-            Color Palette Tool
-            <span class="icon" aria-hidden="true">›</span>
-          </button>
-          <div id="project5" class="accordion-content" role="region" aria-labelledby="project5-title">
-            <div class="project-role">Roll: UX/UI-design, programmering (frontend)</div>
-            <div class="project-text">
-              <ul>
-                <li>Färgpalett-generator och designverktyg med fokus på enkelhet, färgval och interaktivitet.</li>
-                <li><strong>Mitt bidrag:</strong> Design, utveckling av UI och funktion, användartest och dokumentation.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+
       </div>
       <div style="margin-top: 1.3em; font-size: 0.97em; color:var(--muted);">
         <em>Obs! Alla lösningar är koncept och prototyper – inga är implementerade i verkligheten.</em>
       </div>
     </section>
 
+    <section id="om-mig" class="about">
+      <h2>Om mig</h2>
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-title">Tydlighet och lugn</div>
+          <div class="about-text">Jag har arbetat länge i roller där tydlighet och lugn är avgörande. Det har gjort att jag ser ganska snabbt när något riskerar att bli oklart.</div>
+        </div>
+
+        <div class="about-card">
+          <div class="about-title">Förstår det som skaver</div>
+          <div class="about-text">Jag tycker om att förstå varför något skaver – och göra det enklare att ta sig vidare. Att strukturera, testa och justera tills det faktiskt fungerar.</div>
+        </div>
+
+        <div class="about-card">
+          <div class="about-title">Fungerar i verkligheten</div>
+          <div class="about-text">Jag trivs bäst när det jag gör får fungera i verkligheten, inte bara i teorin.</div>
+        </div>
+      </div>
+    </section>
+
     <section id="process">
       <h2>Så här jobbar jag</h2>
-      <ul class="process-list">
-        <li><strong>Empati och användarcentrerat tänk:</strong> Intervjuer, enkäter och observation för verkliga insikter och pain points.</li>
-        <li><strong>Idégenerering och prototypande:</strong> Snabba skisser, workshops och digitala prototyper – för att testa och förbättra idéer tidigt med målgruppen.</li>
-        <li><strong>Iterativt arbetssätt:</strong> Design och test i flera omgångar, alltid med användarens feedback som grund.</li>
-        <li><strong>Tydlighet och tillgänglighet:</strong> Struktur, läsbarhet och WCAG-anpassning i all design.</li>
-        <li><strong>Samarbete och feedback:</strong> Jag trivs bäst när idéer får utmanas och förbättras tillsammans i team.</li>
-      </ul>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-title">Förstår först</div>
+          <div class="card-text">Intervjuer, observation och enkla tester för att se var det blir oklart.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Testar tidigt</div>
+          <div class="card-text">Skisser och prototyper för att snabbt se vad som fungerar.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Förbättrar steg för steg</div>
+          <div class="card-text">Små justeringar, ny feedback, bättre flöde.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Gör det tydligt</div>
+          <div class="card-text">Struktur, läsbarhet och lösningar som fungerar för fler.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Arbetar tillsammans</div>
+          <div class="card-text">Idéer blir bättre när de får utmanas.</div>
+        </div>
+      </div>
     </section>
 
     <section id="bidrag">
-      <h2>Vad jag kan bidra med</h2>
-      <ul class="skills-list">
-        <li>Nyfikenhet, driv och förmåga att förstå användaren på riktigt.</li>
-        <li>Erfarenhet av research, analys, prototypande och presentation.</li>
-        <li>Starkt engagemang för tillgänglighet och inkluderande lösningar.</li>
-        <li>Vana av samarbete, feedback och problemlösning i grupp.</li>
-        <li>Förmåga att omsätta komplexa utmaningar till tydliga, användarvänliga koncept.</li>
-        <li>Snabb på att lära mig nya verktyg och arbetssätt.</li>
-      </ul>
+      <h2>Det jag bidrar med</h2>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-title">Ser helheten</div>
+          <div class="card-text">Hur delar hänger ihop från början till slut.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Gör det röriga tydligt</div>
+          <div class="card-text">Struktur i information och flöden.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Lyssnar på riktigt</div>
+          <div class="card-text">Förstår behov bakom det som sägs.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Arbetar lugnt och metodiskt</div>
+          <div class="card-text">Testar, justerar och förbättrar.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Lär mig snabbt</div>
+          <div class="card-text">Tar till mig nya verktyg och arbetssätt.</div>
+        </div>
+      </div>
     </section>
 
     <section id="kontakt" class="glass-card p-8 rounded-2xl shadow-2xl backdrop-blur-md bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-white/20 transform hover:scale-105 transition-all duration-300">
       <h2 class="text-3xl font-bold mb-6 text-center text-white holographic-text animate-pulse">CV & Kontakt</h2>
+      <p class="contact-intro">Vill du se mer eller ställa en fråga? Hör av dig.</p>
       <button class="show-contact w-full py-4 px-8 mb-6 text-xl font-bold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl" id="toggleContact" aria-expanded="false" aria-controls="contactInfo">
         Visa kontaktuppgifter
       </button>
@@ -1055,7 +1808,7 @@
           <div class="animate-fade-in">
             <dt class="font-bold text-blue-300 text-xl mb-3 underline">Utbildning</dt>
             <dd class="pl-4 space-y-2">
-              <p>Social omsorg, Karlstad universitet.</p>
+              <p>Omsorg och stöd, Karlstad universitet.</p>
               <p>UX Design, Futuregames, Karlstad.</p>
             </dd>
           </div>
@@ -1381,5 +2134,9 @@
       });
     });
   </script>
+  
+  <footer>
+    <p>Tack för att du tittade.</p>
+  </footer>
 </body>
 </html>
