@@ -660,6 +660,15 @@
       body { font-size: 1rem; }
       header, main, section { padding: 1rem; }
       section { padding: 1.2rem 1rem; }
+      #bidrag h2,
+      #kontakt h2 {
+        font-size: 1.55rem;
+        line-height: 1.25;
+        max-width: 15ch;
+        margin-left: auto;
+        margin-right: auto;
+        text-wrap: balance;
+      }
       .cv-key {
         min-width: 120px;
       }
@@ -1031,7 +1040,22 @@
       .project-list .proj-cta-text { display: none; } /* på mobil bara pil */
       .proof-points {
         flex-direction: column;
-        gap: 0.55rem;
+        align-items: flex-start;
+        gap: 0.7rem;
+        width: fit-content;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .proof-points li {
+        display: flex;
+        align-items: flex-start;
+        text-align: left;
+        font-size: 0.9rem;
+        letter-spacing: 0.01em;
+      }
+      .proof-points li::before {
+        margin-right: 0.75em;
       }
     }
 
