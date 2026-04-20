@@ -1,0 +1,439 @@
+﻿<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; script-src 'self' https://cdn.tailwindcss.com; connect-src 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Patrik ThilÃ©n â€“ Portfolio | UX Designer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Jag arbetar med att skapa tydlighet dÃ¤r det annars blir komplext. Projekt inom struktur, tillgÃ¤nglighet och lÃ¶sningar som fungerar i praktiken.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Patrik ThilÃ©n â€“ UX Designer Portfolio">
+  <meta property="og:description" content="Jag arbetar med att skapa tydlighet dÃ¤r det annars blir komplext.">
+  <meta property="og:image" content="profile.jpg">
+  <meta property="og:locale" content="sv_SE">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./graphics.css">
+</head>
+<body>
+  <!-- Custom Cursor -->
+  <div class="cursor"></div>
+  <div class="cursor-dot"></div>
+
+  <!-- Animated Background -->
+  <div class="bg-container">
+    <div class="gradient-orb orb-1"></div>
+    <div class="gradient-orb orb-2"></div>
+    <div class="gradient-orb orb-3"></div>
+    <div class="grid-pattern"></div>
+    <div class="noise"></div>
+    <canvas id="particles"></canvas>
+  </div>
+
+  <!-- Version Switcher -->
+  <div class="version-switcher">
+    <a href="index.html" class="version-link glass">WCAG</a>
+    <a href="graphics.html" class="version-link active" aria-current="page">Grafisk</a>
+  </div>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="profile-wrapper reveal">
+      <div class="profile-glow"></div>
+      <div class="profile-ring"></div>
+      <img src="profile.jpg" alt="Patrik ThilÃ©n" class="profile-img">
+    </div>
+
+    <h1 class="gradient-text reveal reveal-delay-1">Patrik ThilÃ©n</h1>
+
+    <p class="hero-subtitle reveal reveal-delay-2">Jag arbetar med att skapa tydlighet dÃ¤r det annars blir komplext.</p>
+    
+    <p class="hero-text reveal reveal-delay-3">Jag fÃ¶rsÃ¶ker alltid se helheten â€“ hur information, steg och beslut hÃ¤nger ihop i verkligheten. NÃ¤r nÃ¥got kÃ¤nns logiskt, lugnt och sjÃ¤lvklart att anvÃ¤nda vet jag att det fungerar.</p>
+
+    <div class="hero-tagline glass reveal reveal-delay-4">
+      <span>Jag tittar efter var det blir oklart â€“ och gÃ¶r det lÃ¤ttare att ta nÃ¤sta steg.</span>
+    </div>
+
+    <ul class="proof-points reveal reveal-delay-4">
+      <li>Tre utvalda case</li>
+      <li>Prototyp i HTML/CSS/JS</li>
+      <li>Tydlighet och helhet</li>
+    </ul>
+
+    <a href="#projekt" class="cta-btn reveal reveal-delay-5">
+      <span>Se projekt</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
+    </a>
+
+    <div class="nav-wrapper glass reveal reveal-delay-5">
+      <nav>
+        <a href="#projekt" class="active">Projekt</a>
+        <a href="#om-mig">Om mig</a>
+        <a href="#process">Hur jag jobbar</a>
+        <a href="#bidrag">Styrkor</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+
+    <div class="scroll-indicator">
+      <span>Scrolla</span>
+      <div class="line"></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Projects Section -->
+    <section id="projekt">
+      <div class="section-header reveal">
+        <h2>Mina projekt</h2>
+        <p>HÃ¤r Ã¤r tre projekt jag Ã¤r mest stolt Ã¶ver. De visar hur jag tÃ¤nker, fÃ¶renklar och skapar struktur.</p>
+      </div>
+
+      <div class="projects-grid stagger-reveal">
+        <!-- Project 1 -->
+        <div class="project-card glass-strong" data-expanded="false">
+          <button class="project-btn" data-testid="project-btn-1">
+            <div class="project-info">
+              <div class="project-title">NIFA â€“ Ny struktur fÃ¶r webbplatsen</div>
+              <div class="project-subtitle">Omstrukturering, prototyp och test</div>
+              <div class="project-tags">
+                <span class="tag">Team</span>
+                <span class="tag">Struktur</span>
+                <span class="tag">Webb</span>
+              </div>
+            </div>
+            <div class="project-cta">
+              <span>Visa</span>
+              <span class="arrow">â€º</span>
+            </div>
+          </button>
+          <div class="project-content">
+            <div class="project-content-inner">
+              <span class="project-role">// Roll: Struktur, innehÃ¥llsordning, prototyp & test</span>
+              <div class="project-highlights"><strong>Highlights:</strong> Team â€“ Fokus: struktur och tydlighet â€“ Leverans: prototyp + test</div>
+              <div class="project-text">
+                <ul>
+                  <li>Gick igenom den gamla webbplatsen och hittade var nya besÃ¶kare tappade fÃ¶rstÃ¥elsen.</li>
+                  <li>Byggde om startsidan sÃ¥ att man snabbt fÃ¶rstÃ¥r vad NIFA Ã¤r och hur medlemskap hÃ¤nger ihop med behov.</li>
+                  <li>Skapade prototyp och justerade utifrÃ¥n feedback (ordning, luft, rubriker och tydlighet).</li>
+                  <li><strong>Resultat:</strong> lÃ¤ttare att hitta rÃ¤tt och enklare att fÃ¶rstÃ¥ medlemskap tidigt.</li>
+                </ul>
+              </div>
+              <div class="project-decision">
+                <strong>Beslut:</strong> Medlemskap lyftes tidigt i startsidan eftersom nya besÃ¶kare annars inte fÃ¶rstod hur de kunde engagera sig.
+              </div>
+              <div class="project-learning"><strong>LÃ¤rdom:</strong> SmÃ¥ Ã¤ndringar i ordning och rubriker gjorde stÃ¶rst skillnad.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card glass-strong" data-expanded="false">
+          <button class="project-btn" data-testid="project-btn-2">
+            <div class="project-info">
+              <div class="project-title">TillgÃ¤nglig musikspelare â€“ prototyp i HTML/CSS/JS</div>
+              <div class="project-subtitle">TillgÃ¤nglig prototyp byggd i kod</div>
+              <div class="project-tags">
+                <span class="tag">Solo</span>
+                <span class="tag">TillgÃ¤nglighet</span>
+                <span class="tag">Kod</span>
+              </div>
+            </div>
+            <div class="project-cta">
+              <span>Visa</span>
+              <span class="arrow">â€º</span>
+            </div>
+          </button>
+          <div class="project-content">
+            <div class="project-content-inner">
+              <span class="project-role">// Roll: SjÃ¤lvstÃ¤ndigt projekt â€“ research, design, kod & test</span>
+              <div class="project-highlights"><strong>Highlights:</strong> Solo â€“ Fokus: kontroll och tillgÃ¤nglighet â€“ Leverans: HTML/CSS/JS-prototyp</div>
+              <div class="project-text">
+                <ul>
+                  <li>Utgick frÃ¥n vanliga hinder i musikappar och byggde en enkel spelare dÃ¤r allt gÃ¥r att anvÃ¤nda med tangentbord.</li>
+                  <li>La fokus pÃ¥ tydliga fokusmarkeringar, bra kontrast, beskrivande etiketter och ingen autoplay.</li>
+                  <li>Testade mot olika behov och itererade (bl.a. fixade en bug dÃ¤r textstorlek inte Ã¤ndrades som tÃ¤nkt).</li>
+                  <li><strong>Resultat:</strong> en lugn och fÃ¶rutsÃ¤gbar prototyp som ger anvÃ¤ndaren mer kontroll.</li>
+                </ul>
+              </div>
+              <div class="project-decision">
+                <strong>Beslut:</strong> Jag tog bort autoplay och gjorde allt tangentbordsstyrt fÃ¶r att Ã¶ka kontroll och lugn.
+              </div>
+              <div class="project-learning"><strong>LÃ¤rdom:</strong> TillgÃ¤nglighet Ã¤r ofta kontroll och fÃ¶rutsÃ¤gbarhet, inte fler funktioner.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card glass-strong" data-expanded="false">
+          <button class="project-btn" data-testid="project-btn-3">
+            <div class="project-info">
+              <div class="project-title">Kaffesnurran â€“ en enkel sak som fÃ¥r samtal att hÃ¤nda</div>
+              <div class="project-subtitle">Koncept och test fÃ¶r samtal i fikapausen</div>
+              <div class="project-tags">
+                <span class="tag">Team</span>
+                <span class="tag">SamtalsflÃ¶de</span>
+                <span class="tag">Prototyp</span>
+              </div>
+            </div>
+            <div class="project-cta">
+              <span>Visa</span>
+              <span class="arrow">â€º</span>
+            </div>
+          </button>
+          <div class="project-content">
+            <div class="project-content-inner">
+              <span class="project-role">// Roll: Research, koncept, prototyp & test</span>
+              <div class="project-highlights"><strong>Highlights:</strong> Team â€“ Fokus: socialt flyt â€“ Leverans: fysisk prototyp + test</div>
+              <div class="project-text">
+                <ul>
+                  <li>Intervjuer visade att fikapausen uppskattas, men ofta blir kort och uppdelad â€“ nya personer hamnar lÃ¤tt utanfÃ¶r.</li>
+                  <li>Vi tog fram en enkel "snurra" med frÃ¥gor som startar samtal utan att det kÃ¤nns krystat.</li>
+                  <li>Testade teman och ton: vissa frÃ¥gor behÃ¶vde bli mindre personliga fÃ¶r att kÃ¤nnas trygga.</li>
+                  <li><strong>Resultat:</strong> lÃ¥g trÃ¶skel att vara med och mer naturlig kontakt i rummet.</li>
+                </ul>
+              </div>
+              <div class="project-decision">
+                <strong>Beslut:</strong> Vi gjorde frÃ¥gorna mindre personliga fÃ¶r att sÃ¤nka trÃ¶skeln och fÃ¥ fler att vÃ¥ga vara med.
+              </div>
+              <div class="project-learning"><strong>LÃ¤rdom:</strong> Ton Ã¤r viktigare Ã¤n "roliga frÃ¥gor" fÃ¶r att fÃ¥ fler att vÃ¥ga delta.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="projects-note reveal">Obs! Alla lÃ¶sningar Ã¤r koncept och prototyper â€“ inga Ã¤r implementerade i verkligheten.</p>
+    </section>
+
+    <!-- About Section -->
+    <section id="om-mig">
+      <div class="section-header reveal">
+        <h2>Om mig</h2>
+      </div>
+      <div class="cards-grid three-col stagger-reveal">
+        <div class="card glass">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"/>
+              <circle cx="12" cy="12" r="3"/>
+              <line x1="12" y1="2" x2="12" y2="5"/>
+              <line x1="12" y1="19" x2="12" y2="22"/>
+              <line x1="2" y1="12" x2="5" y2="12"/>
+              <line x1="19" y1="12" x2="22" y2="12"/>
+            </svg>
+          </div>
+          <div class="card-title">Tydlighet och lugn</div>
+          <div class="card-text">Jag har arbetat lÃ¤nge i roller dÃ¤r tydlighet och lugn Ã¤r avgÃ¶rande. Det har gjort att jag ser ganska snabbt nÃ¤r nÃ¥got riskerar att bli oklart.</div>
+        </div>
+        <div class="card glass">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              <circle cx="11" cy="11" r="3"/>
+            </svg>
+          </div>
+          <div class="card-title">FÃ¶rstÃ¥r det som skaver</div>
+          <div class="card-text">Jag tycker om att fÃ¶rstÃ¥ varfÃ¶r nÃ¥got skaver â€“ och gÃ¶ra det enklare att ta sig vidare. Att strukturera, testa och justera tills det faktiskt fungerar.</div>
+        </div>
+        <div class="card glass">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            </svg>
+          </div>
+          <div class="card-title">Fungerar i verkligheten</div>
+          <div class="card-text">Jag trivs bÃ¤st nÃ¤r det jag gÃ¶r fÃ¥r fungera i verkligheten, inte bara i teorin.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process">
+      <div class="section-header reveal">
+        <h2>SÃ¥ hÃ¤r jobbar jag</h2>
+      </div>
+      <div class="cards-grid stagger-reveal">
+        <div class="card glass">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
+          <div class="card-title">FÃ¶rstÃ¥r fÃ¶rst</div>
+          <div class="card-text">Intervjuer, observation och enkla tester fÃ¶r att se var det blir oklart.</div>
+        </div>
+        <div class="card glass">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/>
+              <path d="M20 10V8c0-1.1-.9-2-2-2h-5"/>
+              <path d="M6 10V8c0-1.1.9-2 2-2h3"/>
+              <line x1="2" y1="22" x2="22" y2="22"/>
+              <path d="M6 22v-4c0-1.1.9-2 2-2h8c1.1 0 2 .9 2 2v4"/>
+              <circle cx="12" cy="13" r="2"/>
+            </svg>
+          </div>
+          <div class="card-title">Testar tidigt</div>
+          <div class="card-text">Skisser och prototyper fÃ¶r att snabbt se vad som fungerar.</div>
+        </div>
+        <div class="card glass">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <polyline points="23 4 23 10 17 10"/>
+              <polyline points="1 20 1 14 7 14"/>
+              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+            </svg>
+          </div>
+          <div class="card-title">FÃ¶rbÃ¤ttrar steg fÃ¶r steg</div>
+          <div class="card-text">SmÃ¥ justeringar, ny feedback, bÃ¤ttre flÃ¶de.</div>
+        </div>
+        <div class="card glass">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <div class="card-title">GÃ¶r det tydligt</div>
+          <div class="card-text">Struktur, lÃ¤sbarhet och lÃ¶sningar som fungerar fÃ¶r fler.</div>
+        </div>
+        <div class="card glass">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <div class="card-title">Arbetar tillsammans</div>
+          <div class="card-text">IdÃ©er blir bÃ¤ttre nÃ¤r de fÃ¥r utmanas.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Strengths Section -->
+    <section id="bidrag">
+      <div class="section-header reveal">
+        <h2>Det jag bidrar med</h2>
+      </div>
+      <div class="cards-grid stagger-reveal">
+        <div class="card glass">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
+          <div class="card-title">Ser helheten</div>
+          <div class="card-text">Hur delar hÃ¤nger ihop frÃ¥n bÃ¶rjan till slut.</div>
+        </div>
+        <div class="card glass">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="3" width="7" height="7" rx="1"/>
+              <rect x="14" y="3" width="7" height="7" rx="1"/>
+              <rect x="14" y="14" width="7" height="7" rx="1"/>
+              <rect x="3" y="14" width="7" height="7" rx="1"/>
+            </svg>
+          </div>
+          <div class="card-title">GÃ¶r det rÃ¶riga tydligt</div>
+          <div class="card-text">Struktur i information och flÃ¶den.</div>
+        </div>
+        <div class="card glass">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+              <line x1="12" y1="19" x2="12" y2="23"/>
+              <line x1="8" y1="23" x2="16" y2="23"/>
+            </svg>
+          </div>
+          <div class="card-title">Lyssnar pÃ¥ riktigt</div>
+          <div class="card-text">FÃ¶rstÃ¥r behov bakom det som sÃ¤gs.</div>
+        </div>
+        <div class="card glass">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+              <line x1="12" y1="2" x2="12" y2="4"/>
+            </svg>
+          </div>
+          <div class="card-title">Arbetar lugnt och metodiskt</div>
+          <div class="card-text">Testar, justerar och fÃ¶rbÃ¤ttrar.</div>
+        </div>
+        <div class="card glass">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+            </svg>
+          </div>
+          <div class="card-title">LÃ¤r mig snabbt</div>
+          <div class="card-text">Tar till mig nya verktyg och arbetssÃ¤tt.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="kontakt" class="glass-strong reveal">
+      <h2 class="gradient-text">CV & Kontakt</h2>
+      <p class="contact-intro">Vill du se mer eller stÃ¤lla en frÃ¥ga? HÃ¶r av dig.</p>
+      
+      <button class="contact-toggle" id="toggleContact" data-testid="contact-toggle">
+        <span>Visa kontaktuppgifter</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </button>
+
+      <div class="contact-info" id="contactInfo">
+        <div class="contact-grid">
+          <div class="contact-block">
+            <div class="contact-block-title">Kontakt</div>
+            <p><strong>Mail:</strong> <a href="mailto:patrikthilen@gmail.com">patrikthilen@gmail.com</a></p>
+            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/patrik-thilen-119263169/" target="_blank" rel="noopener noreferrer">Patrik ThilÃ©n</a></p>
+          </div>
+          <div class="contact-block">
+            <div class="contact-block-title">Utbildning</div>
+            <p>Omsorg och stÃ¶d, Karlstad universitet</p>
+            <p>UX Design, Futuregames, Karlstad</p>
+          </div>
+          <div class="contact-block">
+            <div class="contact-block-title">Erfarenhet</div>
+            <p>13 Ã¥r inom psykiatrin som boendestÃ¶d</p>
+          </div>
+          <div class="contact-block">
+            <div class="contact-block-title">Egenskaper</div>
+            <p>Analytisk, empatisk, lÃ¶sningsorienterad, kreativ</p>
+            <p><strong>SprÃ¥k:</strong> Svenska, engelska</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Tack fÃ¶r att du tittade. âœ¨</p>
+  </footer>
+
+  <script src="./graphics.js"></script>
+</body>
+</html>
+
