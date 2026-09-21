@@ -1,5 +1,21 @@
 # Design System: Clarity from Complexity
 
+## September 2026 readability update
+
+The current `index.html` and `code.html` share the same restrained dark design.
+This update supersedes the effects and component guidance below where it differs:
+
+- Navigation stays in document flow, with all four links visible on mobile.
+- Typography, the portrait and actual project imagery provide the visual hierarchy.
+- Decorative icon fonts, floating contact controls, particles and glow are removed.
+- Cyan is used for links and actions; warm labels are small accents.
+- Project body copy is at least 16px with generous line spacing.
+- Process steps wrap into a grid rather than requiring horizontal scrolling.
+- Keyboard focus is visible, a skip link reaches the main content, and reduced-motion preferences disable smooth scrolling and transitions.
+- `code.custom.css` contains the responsive presentation layer over the existing compiled Tailwind stylesheet. Both HTML entry points must remain synchronized.
+
+The remaining sections describe the earlier visual direction and are retained for context.
+
 ## 1. Overview & Creative Direction
 The current direction is a dark, premium UX portfolio with a clear "clarity from complexity" story and a stronger practical implementation than the earlier concept draft.
 
