@@ -77,7 +77,7 @@ a:focus-visible {
   text-decoration:underline
 }
 
-main>section {
+main>section:not(.hero) {
   padding:100px 32px
 }
 main>section>.max-w-7xl {
@@ -422,7 +422,7 @@ footer a:hover {
     gap:12px;
     font-size:14px
   }
-  main>section {
+  main>section:not(.hero) {
     padding:64px 20px
   }
   .hero {
@@ -479,4 +479,5 @@ footer a:hover {
   }
 
 }
+
 
